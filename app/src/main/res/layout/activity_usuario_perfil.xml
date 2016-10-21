@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="itesm.mx.planme.MiPerfilActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Descripcion:"
+        android:id="@+id/DescripcionUsuario"
+        android:layout_marginTop="120dp"
+        android:layout_below="@+id/tv_nombreUsuario"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sus planes:"
+        android:id="@+id/SusPlanesUsuario"
+        android:layout_below="@+id/tv_edadUsuario"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Edad:"
+        android:id="@+id/EdadUsuario"
+        android:layout_below="@+id/tv_descripcionUsuario"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="37dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tv_nombreUsuario"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="28dp"
+        android:text="pedrochocolatero" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Llamar"
+        android:id="@+id/btn_llamarUsuario"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esta es la descripcion de pedrochocolatero"
+        android:id="@+id/tv_descripcionUsuario"
+        android:layout_below="@+id/DescripcionUsuario"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_fotoUsuario"
+        android:layout_below="@+id/tv_nombreUsuario"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="31dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="24"
+        android:id="@+id/tv_edadUsuario"
+        android:layout_alignTop="@+id/EdadUsuario"
+        android:layout_alignEnd="@+id/DescripcionUsuario" />
+
+</RelativeLayout>

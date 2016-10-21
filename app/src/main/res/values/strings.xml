@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PlanMe</string>
+    <string name="title_activity_timeline">timelineActivity</string>
+</resources>
