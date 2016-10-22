@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@drawable/logoPlanMe"
+        android:layout_alignParentTop="true"
         android:layout_above="@+id/button_login" />
 
 </RelativeLayout>
