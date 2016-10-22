@@ -11,4 +11,6 @@
     <string name="nameplan">Plan Nombre</string>
     <string name="photo">Toma Foto</string>
     <string name="publish">Publicar Plan</string>
+    <string name="signup">Regístrate</string>
+    <string name="login">Iniciar sesión</string>
 </resources>
