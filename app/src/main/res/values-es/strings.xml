@@ -1,0 +1,10 @@
+<resources>
+    <string name="description">Descripcion</string>
+    <string name="typeEvent">Tipo de Evento</string>
+    <string name="time">Hora</string>
+    <string name="place">Lugar</string>
+    <string name="creator">Creador</string>
+    <string name="participants">Participantes</string>
+    <string name="calling">Llamar Creador</string>
+    <string name="joining">Unirse al Plan</string>
+</resources>

@@ -20,7 +20,8 @@
         <activity android:name=".EditarPerfilActivity" />
         <activity android:name=".MiPerfilActivity" />
         <activity android:name=".UsuarioPerfilActivity" />
-        <activity android:name=".Timeline"></activity>
+        <activity android:name=".Timeline" />
+        <activity android:name=".EventoActivity"></activity>
     </application>
 
 </manifest>

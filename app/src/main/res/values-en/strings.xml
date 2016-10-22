@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">PlanMe</string>
-    <string name="title_activity_timeline" translatable="false">timelineActivity</string>
     <string name="description">Description</string>
     <string name="typeEvent">Event Type</string>
     <string name="time">Time</string>
