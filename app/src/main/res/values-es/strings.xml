@@ -7,4 +7,8 @@
     <string name="participants">Participantes</string>
     <string name="calling">Llamar Creador</string>
     <string name="joining">Unirse al Plan</string>
+    <string name="newplan">Nuevo Plan</string>
+    <string name="nameplan">Plan Nombre</string>
+    <string name="photo">Toma Foto</string>
+    <string name="publish">Publicar Plan</string>
 </resources>

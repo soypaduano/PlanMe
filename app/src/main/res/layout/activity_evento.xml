@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/typeEvent"
-        android:id="@+id/textView_typeEvent"
+        android:id="@+id/textView_newPlan"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
@@ -24,9 +24,9 @@
         android:layout_height="wrap_content"
         android:text="@string/description"
         android:id="@+id/textView_description1"
-        android:layout_below="@+id/textView_typeEvent"
+        android:layout_below="@+id/textView_newPlan"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/textView_typeEvent"
+        android:layout_toStartOf="@+id/textView_newPlan"
         android:layout_marginTop="10dp"
         android:textStyle="bold" />
 

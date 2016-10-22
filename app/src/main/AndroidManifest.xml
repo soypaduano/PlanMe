@@ -21,7 +21,8 @@
         <activity android:name=".MiPerfilActivity" />
         <activity android:name=".UsuarioPerfilActivity" />
         <activity android:name=".Timeline" />
-        <activity android:name=".EventoActivity"></activity>
+        <activity android:name=".EventoActivity" />
+        <activity android:name=".NewEventActivity"></activity>
     </application>
 
 </manifest>

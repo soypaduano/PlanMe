@@ -7,4 +7,8 @@
     <string name="participants">Participants</string>
     <string name="calling">Call Creator</string>
     <string name="joining">Join Event</string>
+    <string name="newplan">New Plan</string>
+    <string name="nameplan">Plan Name</string>
+    <string name="photo">Take a Photo</string>
+    <string name="publish">Publish Plan</string>
 </resources>
