@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/signup"
-        android:id="@+id/button_signup"
+        android:id="@+id/btn_signup"
         android:layout_marginBottom="78dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
@@ -24,16 +24,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login"
-        android:id="@+id/button_login"
-        android:layout_above="@+id/button_signup"
-        android:layout_alignStart="@+id/button_signup" />
+        android:id="@+id/btn_login"
+        android:layout_above="@+id/btn_signup"
+        android:layout_alignStart="@+id/btn_signup" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:src="@drawable/logoPlanMe"
+        android:src="@drawable/logo"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/button_login" />
+        android:layout_above="@+id/btn_login" />
 
 </RelativeLayout>

@@ -96,18 +96,19 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="@string/creator"
-        android:id="@+id/textView_creator"
+        android:id="@+id/tv_creador"
         android:layout_below="@+id/linearLayout2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="#0e0bd2" />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/imageView_creator"
-        android:layout_below="@+id/textView_creator"
+        android:layout_below="@+id/tv_creador"
         android:layout_centerHorizontal="true" />
 
     <LinearLayout
@@ -144,7 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/calling"
-            android:id="@+id/button_call"
+            android:id="@+id/btn_llamar"
             android:layout_gravity="right"
             android:layout_weight="1" />
 
@@ -152,7 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/joining"
-            android:id="@+id/button_join"
+            android:id="@+id/btn_unirse"
             android:layout_gravity="left"
             android:layout_weight="1" />
     </LinearLayout>

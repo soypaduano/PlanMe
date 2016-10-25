@@ -11,6 +11,6 @@
     <string name="nameplan">Plan Name</string>
     <string name="photo">Take a Photo</string>
     <string name="publish">Publish Plan</string>
-    <string name="signup">SignUp</string>
-    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Log in</string>
 </resources>

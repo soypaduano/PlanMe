@@ -84,22 +84,34 @@
             android:layout_height="match_parent"
             android:text="@string/time"
             android:id="@+id/textView_time1"
-            android:gravity="center"
+            android:gravity="top|center"
             android:textStyle="bold"
-            android:layout_weight="0.5" />
+            android:layout_weight="0.5"
+            android:layout_gravity="top" />
 
         <Spinner
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner_hour"
+            android:id="@+id/sp_horas"
             android:spinnerMode="dropdown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text=":"
+            android:id="@+id/textView22"
+            android:layout_weight="0.13"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_gravity="top" />
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner_minute"
+            android:id="@+id/sp_minutos"
             android:spinnerMode="dropdown"
-            android:layout_marginLeft="15dp" />
+            android:layout_marginLeft="15dp"
+            android:contentDescription="minutos" />
 
     </LinearLayout>
 
@@ -116,7 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText_place"
         android:layout_centerHorizontal="true"
-        android:id="@+id/spinner_category"
+        android:id="@+id/sp_categoria"
         android:spinnerMode="dropdown"
         android:layout_marginTop="15dp" />
 
@@ -124,8 +136,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/photo"
-        android:id="@+id/button_photo"
-        android:layout_below="@+id/spinner_category"
+        android:id="@+id/btn_foto"
+        android:layout_below="@+id/sp_categoria"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
 
@@ -133,14 +145,14 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/imageView_photo"
-        android:layout_below="@+id/button_photo"
+        android:layout_below="@+id/btn_foto"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/publish"
-        android:id="@+id/button"
+        android:id="@+id/btn_publicar"
         android:layout_below="@+id/imageView_photo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp" />
