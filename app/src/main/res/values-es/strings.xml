@@ -11,4 +11,10 @@
     <string name="nameplan">Plan Nombre</string>
     <string name="photo">Toma Foto</string>
     <string name="publish">Publicar Plan</string>
+    <string name="passwordChange">Cambiar Contrasena</string>
+    <string name="passwordActual">Contrasena Actual</string>
+    <string name="passwordNew">Nueva Contrasena</string>
+    <string name="passwordNewConfirm">Confirmar Nueva Contrasena</string>
+    <string name="confirm">Confirmar</string>
+    <string name="perfilEdit">Edita Perfilo</string>
 </resources>
