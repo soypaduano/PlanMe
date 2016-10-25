@@ -11,10 +11,6 @@
     <string name="nameplan">Plan Name</string>
     <string name="photo">Take a Photo</string>
     <string name="publish">Publish Plan</string>
-    <string name="passwordChange">Password Change</string>
-    <string name="passwordActual">Actual Password</string>
-    <string name="passwordNew">New Password</string>
-    <string name="passwordNewConfirm">Confirm New Password</string>
-    <string name="confirm">Confirm</string>
-    <string name="perfilEdit">Edit Profile</string>
+    <string name="signup">SignUp</string>
+    <string name="login">Login</string>
 </resources>

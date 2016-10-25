@@ -14,16 +14,16 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Signup"
+        android:text="@string/signup"
         android:id="@+id/button_signup"
+        android:layout_marginBottom="78dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="101dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/login"
         android:id="@+id/button_login"
         android:layout_above="@+id/button_signup"
         android:layout_alignStart="@+id/button_signup" />
@@ -32,8 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
+        android:src="@drawable/logoPlanMe"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="93dp" />
+        android:layout_above="@+id/button_login" />
 
 </RelativeLayout>
