@@ -48,8 +48,4 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
                 break;
         }
     }
-
-    public void prova(){
-
-    }
 }
