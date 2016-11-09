@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "54570331933",
+    "firebase_url": "https://planme-ab054.firebaseio.com",
+    "project_id": "planme-ab054",
+    "storage_bucket": "planme-ab054.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54570331933:android:ad84eff7bdeb4356",
+        "android_client_info": {
+          "package_name": "itesm.mx.planme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54570331933-rkjgto8reth4j8uvejtmi1dtbp0vdtnk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQzIJUL5fBDVjrcRxXpHQVBEgmkHssMto"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
