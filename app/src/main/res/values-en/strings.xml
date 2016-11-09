@@ -13,4 +13,18 @@
     <string name="publish">Publish Plan</string>
     <string name="signup">Sign Up</string>
     <string name="login">Log in</string>
+    <string name="email">Email</string>
+    <string name="createAccount">Create an Account</string>
+    <string name="createPlan">Create Event</string>
+    <string name="forgotPass">¿Forgot password?</string>
+    <string name="lookPlan">Look for a Event</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="birthday">Birthday</string>
+    <string name="phone">Phone Number</string>
+    <string name="sex">Sex</string>
+    <string name="password">Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
 </resources>

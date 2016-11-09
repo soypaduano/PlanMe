@@ -40,7 +40,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/username"
+        android:text="@string/email"
         android:id="@+id/textView19"
         android:layout_above="@+id/et_email"
         android:layout_centerHorizontal="true"

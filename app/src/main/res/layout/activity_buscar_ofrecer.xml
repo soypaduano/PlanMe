@@ -28,15 +28,13 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:id="@+id/btn_verPerfil"
         android:layout_alignParentBottom="true"
         android:background="@drawable/verperfil"
-        android:layout_below="@+id/btn_buscarPlan"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/btn_buscarPlan"
-        android:layout_marginTop="60dp"
         android:layout_marginLeft="30dp" />
 
     <Button

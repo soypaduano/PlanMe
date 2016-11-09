@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btn_login;
-    private EditText et_username;
+    private EditText et_email;
     private EditText et_passwd;
     private TextView tv_forgotPass;
 
@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         btn_login = (Button) findViewById(R.id.btn_login);
         et_passwd = (EditText) findViewById(R.id.et_passwd);
-        et_username = (EditText) findViewById(R.id.et_email);
+        et_email = (EditText) findViewById(R.id.et_email);
         tv_forgotPass = (TextView) findViewById(R.id.tv_forgotPass);
         btn_login.setOnClickListener(this);
         tv_forgotPass.setOnClickListener(this);
@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btn_login:
                 String correo;
                 String password;
-                correo = String.valueOf(et_username.getText());
+                correo = String.valueOf(et_email.getText());
                 password = String.valueOf(et_passwd.getText());
                 if((correo.isEmpty())!=true && (password.isEmpty())!=true){
                     mAuth.signInWithEmailAndPassword(correo, password)

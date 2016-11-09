@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,7 +29,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     private EditText et_nombre;
     private EditText et_apellido;
-    private EditText et_username;
     private EditText et_correo;
     private EditText et_telefono;
     private EditText et_passwd;
@@ -37,8 +40,14 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     private Button btn_registrar;
 
+    private RadioGroup radioSexGroup;
+    private RadioButton radioSexButton;
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
+    private DatabaseReference mDatabase;
+
 
     public static final String TAG = "SignUp";
 
@@ -50,7 +59,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         et_apellido = (EditText) findViewById(R.id.et_apellido);
         et_nombre = (EditText) findViewById(R.id.et_nombre);
-        et_username = (EditText) findViewById(R.id.et_username);
         et_correo = (EditText) findViewById(R.id.et_correo);
         et_telefono = (EditText) findViewById(R.id.et_telefono);
         et_passwd = (EditText) findViewById(R.id.et_password);
@@ -59,6 +67,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         sp_año = (Spinner) findViewById(R.id.sp_año);
         sp_dia = (Spinner) findViewById(R.id.sp_dia);
         sp_mes = (Spinner) findViewById(R.id.sp_mes);
+
+        radioSexGroup = (RadioGroup)findViewById(R.id.radioGroup);
 
         btn_registrar = (Button) findViewById(R.id.btn_registrate);
         btn_registrar.setOnClickListener(this);
@@ -82,6 +92,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 // ...
             }
         };
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
     }
 
     @Override
@@ -150,6 +163,16 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                         Toast.LENGTH_SHORT).show();
                             }
                             else{
+                                int selectedId = radioSexGroup.getCheckedRadioButtonId();
+                                radioSexButton = (RadioButton)findViewById(selectedId);
+                                writeNewUser(mAuth.getCurrentUser().getUid(),
+                                        et_nombre.getText().toString(),
+                                        et_apellido.getText().toString(),
+                                        (sp_dia.getSelectedItem().toString()) + (sp_mes.getSelectedItemPosition()+1) + (sp_año.getSelectedItem().toString()),
+                                        et_correo.getText().toString(),
+                                        et_telefono.getText().toString(),
+                                        radioSexButton.getText().toString()
+                                        );
                                 Intent myIntent = new Intent(SignupActivity.this, BuscarOfrecerActivity.class);
                                 startActivity(myIntent);
                                 finish();
@@ -164,5 +187,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(correo);
         return m.matches();
+    }
+
+    private void writeNewUser(String uid, String nombre, String apellido, String fechanacimiento, String correo, String numero, String sexo) {
+        Usuario user = new Usuario(uid, nombre, apellido, fechanacimiento, correo, numero, sexo);
+        mDatabase.child("users").child(uid).setValue(user);
     }
 }
