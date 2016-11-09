@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -49,6 +52,14 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
                 Intent myIntento1 = new Intent(this, MiPerfilActivity.class);
                 startActivity(myIntento1);
                 break;
+
+            case R.id.button_signout:
+
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(getApplicationContext(), "Signed Out",
+                        Toast.LENGTH_SHORT).show();
+                finish();
+
         }
     }
 }

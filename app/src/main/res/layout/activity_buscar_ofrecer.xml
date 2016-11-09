@@ -42,7 +42,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN.OUT"
+        android:text="SIGN-OUT"
         android:id="@+id/button_signout"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
