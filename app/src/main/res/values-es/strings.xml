@@ -13,4 +13,5 @@
     <string name="publish">Publicar Plan</string>
     <string name="signup">Regístrate</string>
     <string name="login">Iniciar sesión</string>
+    <string name="changePass">Cambiar contraseña</string>
 </resources>

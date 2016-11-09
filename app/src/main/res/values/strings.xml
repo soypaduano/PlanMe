@@ -50,4 +50,5 @@
 
     <string name="createPlan">Create Plan</string>
     <string name="lookPlan">Look for a Plan</string>
+    <string name="changePass">Change password</string>
 </resources>
