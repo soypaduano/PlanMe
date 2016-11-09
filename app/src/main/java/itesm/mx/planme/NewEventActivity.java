@@ -13,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -36,6 +40,8 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
     private Bitmap bitmap;
     private byte[] byteArray;
 
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +64,11 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         btn_foto.setOnClickListener(this);
         btn_publicar.setOnClickListener(this);
 
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
     }
+
 
     public void initSpinners(){
 
@@ -112,4 +122,9 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
             img_Foto.setImageBitmap(bitmap);
         }
     }
+
+    /*private void writeNewEvent(String nombre, String descripcion, String horario, String tipodeplan, byte[] byteArray, String uid) {
+        Event event = new Event(nombre, descripcion, horario, tipodeplan, byteArray, uid);
+        mDatabase.child("events").child(uid).setValue(event);
+    }*/
 }

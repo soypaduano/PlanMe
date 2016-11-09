@@ -8,18 +8,18 @@ public class Event {
     private String horario;
     private String tipodeplan;
     private byte[] byteArray;
-    private String correo;
+    private String uid;
 
     public Event() {
     }
 
-    public Event(String nombre, String descripcion, String horario, String tipodeplan, byte[] byteArray, String correo) {
+    public Event(String nombre, String descripcion, String horario, String tipodeplan, byte[] byteArray, String uid) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.horario = horario;
         this.tipodeplan = tipodeplan;
         this.byteArray = byteArray;
-        this.correo = correo;
+        this.uid = uid;
     }
 
     public String getNombre() {
@@ -62,11 +62,11 @@ public class Event {
         this.byteArray = byteArray;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getuid() {
+        return uid;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setuid(String uid) {
+        this.uid = uid;
     }
 }
