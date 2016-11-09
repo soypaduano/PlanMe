@@ -161,7 +161,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et_passwd2"
+        android:id="@+id/et_password2"
         android:layout_alignEnd="@+id/et_password"
         android:layout_alignStart="@+id/et_password"
         android:layout_below="@+id/et_password"
