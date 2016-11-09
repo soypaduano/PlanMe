@@ -11,6 +11,7 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
     private Button btn_crearPlan;
     private Button btn_buscarPlan;
     private Button btn_verPerfil;
+    private Button btn_signout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +21,11 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
         btn_buscarPlan = (Button) findViewById(R.id.btn_buscarPlan);
         btn_crearPlan = (Button) findViewById(R.id.btn_crearPlan);
         btn_verPerfil = (Button) findViewById(R.id.btn_verPerfil);
+        btn_signout = (Button)findViewById(R.id.button_signout);
         btn_crearPlan.setOnClickListener(this);
         btn_buscarPlan.setOnClickListener(this);
         btn_verPerfil.setOnClickListener(this);
+        btn_signout.setOnClickListener(this);
 
     }
 

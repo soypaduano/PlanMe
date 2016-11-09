@@ -84,15 +84,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                         Toast.makeText(getApplicationContext(), "SignIn Failed, try again",
                                                 Toast.LENGTH_SHORT).show();
                                     }
-
-                                    // ...
+                                    else {
+                                        Intent myIntento = new Intent(LoginActivity.this, BuscarOfrecerActivity.class);
+                                        startActivity(myIntento);
+                                        finish();
+                                    }
                                 }
                             });
-                    if((mAuth.getCurrentUser())!=null){
-                        Intent myIntento =  new Intent(this, BuscarOfrecerActivity.class);
-                        startActivity(myIntento);
                     }
-                }
                 break;
 
             case R.id.tv_forgotPass:

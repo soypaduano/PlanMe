@@ -149,21 +149,14 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                 Toast.makeText(getApplicationContext(), "Signup failed, try again",
                                         Toast.LENGTH_SHORT).show();
                             }
-
-                            // ...
+                            else{
+                                Intent myIntent = new Intent(SignupActivity.this, BuscarOfrecerActivity.class);
+                                startActivity(myIntent);
+                                finish();
+                            }
                         }
                     });
             }
-        if(mAuth.getCurrentUser()!=null){
-            Intent myIntent = new Intent(this, BuscarOfrecerActivity.class);
-            startActivity(myIntent);
-
-        }
-        else
-            Toast.makeText(getApplicationContext(), "Correo or Contrasena incorecta",
-                    Toast.LENGTH_SHORT).show();
-
-
     }
 
     public boolean isValidEmailAddress(String correo) {
