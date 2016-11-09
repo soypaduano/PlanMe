@@ -1,0 +1,16 @@
+<resources>
+    <string name="description">Description</string>
+    <string name="typeEvent">Event Type</string>
+    <string name="time">Time</string>
+    <string name="place">Place</string>
+    <string name="creator">Creator</string>
+    <string name="participants">Participants</string>
+    <string name="calling">Call Creator</string>
+    <string name="joining">Join Event</string>
+    <string name="newplan">New Plan</string>
+    <string name="nameplan">Plan Name</string>
+    <string name="photo">Take a Photo</string>
+    <string name="publish">Publish Plan</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Log in</string>
+</resources>

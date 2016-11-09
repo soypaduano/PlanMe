@@ -1,0 +1,16 @@
+<resources>
+    <string name="description">Descripcion</string>
+    <string name="typeEvent">Tipo de Evento</string>
+    <string name="time">Hora</string>
+    <string name="place">Lugar</string>
+    <string name="creator">Creador</string>
+    <string name="participants">Participantes</string>
+    <string name="calling">Llamar Creador</string>
+    <string name="joining">Unirse al Plan</string>
+    <string name="newplan">Nuevo Plan</string>
+    <string name="nameplan">Plan Nombre</string>
+    <string name="photo">Toma Foto</string>
+    <string name="publish">Publicar Plan</string>
+    <string name="signup">Regístrate</string>
+    <string name="login">Iniciar sesión</string>
+</resources>
