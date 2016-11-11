@@ -145,18 +145,21 @@
         android:layout_marginTop="20dp" />
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
         android:id="@+id/imageView_photo"
-        android:layout_below="@+id/btn_foto"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignTop="@+id/btn_foto"
+        android:layout_below="@+id/btn_publicar" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/publish"
         android:id="@+id/btn_publicar"
-        android:layout_below="@+id/imageView_photo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/btn_foto" />
 </RelativeLayout>

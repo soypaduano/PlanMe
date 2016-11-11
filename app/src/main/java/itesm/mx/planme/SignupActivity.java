@@ -48,9 +48,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     private DatabaseReference mDatabase;
 
-
     public static final String TAG = "SignUp";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,8 +172,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                         radioSexButton.getText().toString()
                                         );
                                 Intent myIntent = new Intent(SignupActivity.this, BuscarOfrecerActivity.class);
+                                myIntent.putExtra("uid",mAuth.getCurrentUser().getUid());
                                 startActivity(myIntent);
-                                finish();
                             }
                         }
                     });

@@ -86,6 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     }
                                     else {
                                         Intent myIntento = new Intent(LoginActivity.this, BuscarOfrecerActivity.class);
+                                        myIntento.putExtra("uid",mAuth.getCurrentUser().getUid());
                                         startActivity(myIntento);
                                         finish();
                                     }
