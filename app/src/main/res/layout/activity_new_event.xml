@@ -17,7 +17,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="30dp" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -58,16 +59,17 @@
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:text="@string/description"
-            android:id="@+id/textView_description1"
+            android:id="@+id/textView_description"
             android:gravity="center"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Write something about the plan"
-            android:id="@+id/textView_description2"
-            android:gravity="center" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_description"
+            android:layout_weight="1"
+            android:hint="Something about the event" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -77,7 +79,8 @@
         android:weightSum="1"
         android:id="@+id/linearLayout4"
         android:layout_below="@+id/linearLayout3"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp">
 
         <TextView
             android:layout_width="120dp"
@@ -86,11 +89,10 @@
             android:id="@+id/textView_time1"
             android:gravity="top|center"
             android:textStyle="bold"
-            android:layout_weight="0.5"
             android:layout_gravity="top" />
 
         <Spinner
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/sp_horas"
             android:spinnerMode="dropdown"
@@ -120,12 +122,12 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:id="@+id/editText_place"
+        android:hint="@string/place"
         android:layout_below="@+id/linearLayout4"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/place" />
+        android:layout_centerHorizontal="true" />
 
     <Spinner
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText_place"
         android:layout_centerHorizontal="true"
@@ -143,18 +145,21 @@
         android:layout_marginTop="20dp" />
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
         android:id="@+id/imageView_photo"
-        android:layout_below="@+id/btn_foto"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignTop="@+id/btn_foto"
+        android:layout_below="@+id/btn_publicar" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/publish"
         android:id="@+id/btn_publicar"
-        android:layout_below="@+id/imageView_photo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/btn_foto" />
 </RelativeLayout>

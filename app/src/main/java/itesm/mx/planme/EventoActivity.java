@@ -12,7 +12,6 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
     private Button btn_llamar;
     private Button btn_unirAlPlan;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

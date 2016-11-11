@@ -12,5 +12,16 @@
     <string name="photo">Toma Foto</string>
     <string name="publish">Publicar Plan</string>
     <string name="signup">Regístrate</string>
-    <string name="login">Iniciar sesión</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="email">Correo</string>
+    <string name="createAccount">Crea Usuario</string>
+    <string name="createPlan">Crea Plan</string>
+    <string name="forgotPass">¿Constrasena olvidada?</string>
+    <string name="lookPlan">Busca un Plan</string>
+    <string name="surname">Apellido</string>
+    <string name="phone">Celular</string>
+    <string name="sex">Sexo</string>
+    <string name="password">Contrasena</string>
+    <string name="confirm">Confirmar</string>
+    <string name="woman">Mujer</string>
 </resources>
