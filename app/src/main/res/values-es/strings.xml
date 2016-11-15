@@ -24,4 +24,8 @@
     <string name="password">Contrasena</string>
     <string name="confirm">Confirmar</string>
     <string name="woman">Mujer</string>
+    <string name="birthday">Fecha de nacimiento</string>
+    <string name="msgForgotPass">Tu email ...</string>
+    <string name="name">Nombre</string>
+    <string name="username">Nombre de Usuario</string>
 </resources>
