@@ -59,4 +59,5 @@
     <string name="confirm">Confirm</string>
     <string name="man">Man</string>
     <string name="woman">Woman</string>
+    <string name="logOut">Log Out</string>
 </resources>

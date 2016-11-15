@@ -28,4 +28,5 @@
     <string name="msgForgotPass">Tu email ...</string>
     <string name="name">Nombre</string>
     <string name="username">Nombre de Usuario</string>
+    <string name="logOut">Cerrar sesión</string>
 </resources>

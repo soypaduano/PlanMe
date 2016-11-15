@@ -30,4 +30,5 @@
     <string name="msgForgotPass">Your email ...</string>
     <string name="getPassMsg"></string>
     <string name="username">Username</string>
+    <string name="logOut">Log Out</string>
 </resources>
