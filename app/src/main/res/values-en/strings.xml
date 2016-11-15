@@ -27,4 +27,17 @@
     <string name="confirm">Confirm</string>
     <string name="man">Man</string>
     <string name="woman">Woman</string>
+    <string name="msgForgotPass">Your email ...</string>
+    <string name="getPassMsg">Send password reset email</string>
+    <string name="username">Username</string>
+    <string name="logOut">Log Out</string>
+    <string name="changePass">Change password</string>
+    <string name="newPass">New password</string>
+    <string name="app_name" translatable="false"></string>
+    <string name="confirmPass">Confirm password</string>
+    <string name="editProfile">Edit profile</string>
+    <string name="lastname">Lastname</string>
+    <string name="telephoneNum">Telephone number</string>
+    <string name="changeProfilePhoto">Change photo</string>
+    <string name="saveChanges">Save changes</string>
 </resources>
