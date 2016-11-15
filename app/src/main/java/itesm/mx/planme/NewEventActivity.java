@@ -30,6 +30,9 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
 
     String[] categories;
 
+
+    // SEBASTIANO
+
     private EditText et_planname;
     private EditText et_descripcion;
     private EditText et_place;
