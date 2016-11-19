@@ -24,4 +24,12 @@
     <string name="password">Contrasena</string>
     <string name="confirm">Confirmar</string>
     <string name="woman">Mujer</string>
+    <string name="delete">Cancela</string>
+    <string name="back">Atras</string>
+    <string name="birthday">Cumpleano</string>
+    <string name="username">Usuario</string>
+    <string name="modify">Modifica</string>
+    <string name="date">Fecha</string>
+    <string name="settime">Set Hora</string>
+    <string name="setdate">Set Fecha</string>
 </resources>

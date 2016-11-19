@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item android:id="@+id/delete"
+        android:title="@string/delete"
+        android:orderInCategory="2"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/modify"
+        android:title="@string/modify"
+        android:orderInCategory="1"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/back"
+        android:title="@string/back"
+        android:orderInCategory="3"
+        app:showAsAction="never" />
+
+</menu>

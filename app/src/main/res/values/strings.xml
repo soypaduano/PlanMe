@@ -59,4 +59,11 @@
     <string name="confirm">Confirm</string>
     <string name="man">Man</string>
     <string name="woman">Woman</string>
+    <string name="delete">Delete</string>
+    <string name="back">Back</string>
+    <string name="modify">Modify</string>
+    <string name="date">Date</string>
+    <string name="settime">Set Time</string>
+    <string name="setdate">Set Date</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

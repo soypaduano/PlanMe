@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/newplan"
-        android:id="@+id/textView_newPlan"
+        android:id="@+id/textView_nameEvent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
@@ -28,7 +28,7 @@
         android:weightSum="1"
         android:layout_marginTop="5dp"
         android:id="@+id/linearLayout"
-        android:layout_below="@+id/textView_newPlan">
+        android:layout_below="@+id/textView_nameEvent">
 
         <TextView
             android:layout_width="120dp"
@@ -83,83 +83,110 @@
         android:layout_marginTop="5dp">
 
         <TextView
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
             android:text="@string/time"
             android:id="@+id/textView_time1"
             android:gravity="top|center"
             android:textStyle="bold"
             android:layout_gravity="top" />
 
-        <Spinner
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sp_horas"
-            android:spinnerMode="dropdown"
-            android:layout_marginLeft="15dp" />
+            android:id="@+id/textView_time"
+            android:layout_marginRight="5dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_settime"
+            android:text="@string/settime"
+            android:layout_marginRight="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:text=":"
+            android:layout_height="wrap_content"
             android:id="@+id/textView22"
-            android:layout_weight="0.13"
-            android:gravity="center_horizontal"
+            android:text="@string/date"
             android:textStyle="bold"
-            android:layout_gravity="top" />
+            android:layout_marginRight="5dp" />
 
-        <Spinner
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sp_minutos"
-            android:spinnerMode="dropdown"
-            android:layout_marginLeft="15dp"
-            android:contentDescription="minutos" />
+            android:id="@+id/textView_date"
+            android:layout_marginRight="5dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/setdate"
+            android:id="@+id/btn_setdate" />
 
     </LinearLayout>
-
-    <EditText
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText_place"
-        android:hint="@string/place"
-        android:layout_below="@+id/linearLayout4"
-        android:layout_centerHorizontal="true" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText_place"
-        android:layout_centerHorizontal="true"
         android:id="@+id/sp_categoria"
         android:spinnerMode="dropdown"
-        android:layout_marginTop="15dp" />
+        android:layout_below="@+id/linearLayout4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/photo"
-        android:id="@+id/btn_foto"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/sp_categoria"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:id="@+id/linearLayout7"
+        android:layout_marginTop="5dp">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView_photo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentEnd="false"
-        android:layout_alignTop="@+id/btn_foto"
-        android:layout_below="@+id/btn_publicar" />
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:text="@string/place"
+            android:id="@+id/textView_place"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_place"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/linearLayout7"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/photo"
+            android:id="@+id/btn_photo"
+            android:layout_gravity="center_vertical" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView_photo"
+            android:layout_marginLeft="80dp" />
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/publish"
-        android:id="@+id/btn_publicar"
+        android:id="@+id/btn_publish"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/btn_foto" />
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

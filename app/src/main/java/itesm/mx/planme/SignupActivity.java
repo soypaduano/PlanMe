@@ -174,6 +174,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                 Intent myIntent = new Intent(SignupActivity.this, BuscarOfrecerActivity.class);
                                 myIntent.putExtra("uid",mAuth.getCurrentUser().getUid());
                                 startActivity(myIntent);
+                                finish();
                             }
                         }
                     });
