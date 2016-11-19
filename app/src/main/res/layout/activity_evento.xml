@@ -12,8 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/typeEvent"
-        android:id="@+id/textView_newPlan"
+        android:id="@+id/textView_nameEvent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
@@ -24,9 +23,9 @@
         android:layout_height="wrap_content"
         android:text="@string/description"
         android:id="@+id/textView_description"
-        android:layout_below="@+id/textView_newPlan"
+        android:layout_below="@+id/textView_nameEvent"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/textView_newPlan"
+        android:layout_toStartOf="@+id/textView_nameEvent"
         android:layout_marginTop="10dp"
         android:textStyle="bold" />
 
@@ -51,19 +50,33 @@
         android:id="@+id/linearLayout">
 
         <TextView
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/time"
             android:id="@+id/textView_time1"
             android:gravity="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginRight="20dp" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="time"
-            android:id="@+id/textView_time2"
-            android:gravity="center" />
+            android:id="@+id/textView_time"
+            android:gravity="center"
+            android:layout_marginRight="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            android:id="@+id/textView23"
+            android:textStyle="bold"
+            android:layout_marginRight="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_date" />
     </LinearLayout>
 
     <LinearLayout
@@ -88,50 +101,13 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:id="@+id/imageView_place"
+            android:id="@+id/imageView_photoEvent"
             android:layout_weight="0.65" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="@string/creator"
-        android:id="@+id/tv_creador"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textColor="#0e0bd2" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageView_creator"
-        android:layout_below="@+id/tv_creador"
-        android:layout_centerHorizontal="true" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/imageView_creator"
-        android:layout_centerHorizontal="true">
 
         <TextView
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:text="@string/participants"
-            android:id="@+id/textView_participants"
-            android:gravity="center"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="number of participants"
-            android:id="@+id/textView_nParticipants"
-            android:gravity="center" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_place2" />
     </LinearLayout>
 
     <LinearLayout
@@ -139,7 +115,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout6">
 
         <Button
             android:layout_width="wrap_content"
@@ -156,5 +133,57 @@
             android:id="@+id/btn_unirse"
             android:layout_gravity="left"
             android:layout_weight="1" />
+
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/linearLayout5"
+        android:layout_above="@+id/linearLayout6"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="@string/participants"
+            android:id="@+id/textView_participants"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="number of participants"
+            android:id="@+id/textView_nParticipants"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/linearLayout5">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Creator"
+            android:id="@+id/textView4"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_creatorname"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp" />
+
+    </LinearLayout>
+
 </RelativeLayout>

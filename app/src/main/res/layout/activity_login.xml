@@ -17,7 +17,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:inputType="textEmailAddress"
-        android:text="6@gmail.com" />
+        android:text="5@gmail.com" />
 
     <TextView
         android:layout_width="wrap_content"

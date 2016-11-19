@@ -1,12 +1,14 @@
 package itesm.mx.planme;
 
+import java.io.Serializable;
 
-public class Event {
+public class Event implements Serializable{
 
     private String nombre;
     private String descripcion;
     private String horario;
     private String tipodeplan;
+    private String fecha;
     private String address;
     private String byteArray;
     private String uid;
@@ -14,11 +16,20 @@ public class Event {
     public Event() {
     }
 
-    public Event(String nombre, String descripcion, String horario, String tipodeplan, String address, String byteArray, String uid) {
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public Event(String nombre, String descripcion, String horario, String tipodeplan, String fecha, String address, String byteArray, String uid) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.horario = horario;
         this.tipodeplan = tipodeplan;
+        this.fecha = fecha;
         this.address = address;
         this.byteArray = byteArray;
         this.uid = uid;

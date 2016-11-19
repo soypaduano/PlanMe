@@ -34,6 +34,7 @@ public class EventAdapter extends ArrayAdapter<Event>{
         TextView tv_time = (TextView) convertView.findViewById(R.id.textView_time);
         TextView tv_place = (TextView) convertView.findViewById(R.id.textView_place);
         TextView tv_plantype = (TextView)convertView.findViewById(R.id.textView_plantype);
+        TextView tv_uid = (TextView)convertView.findViewById(R.id.textView_uidcreator);
         ImageView img_Foto = (ImageView) convertView.findViewById(R.id.imageView_foto);
 
         Event event = getItem(position);
@@ -42,6 +43,7 @@ public class EventAdapter extends ArrayAdapter<Event>{
         tv_time.setText("Time: " + event.getHorario());
         tv_place.setText("Place: " + event.getAddress());
         tv_plantype.setText("Type: " + event.getTipodeplan());
+        tv_uid.setText("UID creator: " + event.getuid());
 
         String encodedImage = event.getByteArray();
         byte[] image = Base64.decode(encodedImage, Base64.DEFAULT);

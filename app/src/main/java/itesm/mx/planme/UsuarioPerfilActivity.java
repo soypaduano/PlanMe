@@ -23,7 +23,6 @@ public class UsuarioPerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_perfil);
 
-        
         tv_nombreUsuario = (TextView) findViewById(R.id.tv_nombreUsuario);
         tv_descripcionUsuario = (TextView) findViewById(R.id.tv_descripcionUsuario);
         tv_edadUsuario = (TextView) findViewById(R.id.tv_edadUsuario);
