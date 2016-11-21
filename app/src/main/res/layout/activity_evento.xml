@@ -107,7 +107,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView_place2" />
+            android:id="@+id/textView_place2"
+            android:clickable="false"
+            android:contextClickable="false"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -139,7 +142,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="150dp"
         android:id="@+id/linearLayout5"
         android:layout_above="@+id/linearLayout6"
         android:layout_alignParentStart="true">
@@ -152,12 +155,12 @@
             android:gravity="center"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="number of participants"
-            android:id="@+id/textView_nParticipants"
-            android:gravity="center" />
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView_participants"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -172,7 +175,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Creator"
+            android:text="@string/createby"
             android:id="@+id/textView4"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="20dp" />

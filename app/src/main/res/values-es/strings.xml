@@ -32,4 +32,8 @@
     <string name="date">Fecha</string>
     <string name="settime">Set Hora</string>
     <string name="setdate">Set Fecha</string>
+    <string name="disjoin">Disunete</string>
+    <string name="createby">Creato desde:</string>
+    <string name="editprofile">Edita Perfil</string>
+    <string name="myprofile">Mi Perfil</string>
 </resources>

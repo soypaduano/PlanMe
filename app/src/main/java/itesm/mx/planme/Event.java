@@ -90,4 +90,11 @@ public class Event implements Serializable{
     public void setuid(String uid) {
         this.uid = uid;
     }
+
+    public boolean equals(Event other) {
+        if (!(other instanceof Event)) {
+            return false;
+        }
+        return true;
+    }
 }

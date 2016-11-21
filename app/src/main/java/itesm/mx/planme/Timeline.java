@@ -2,7 +2,6 @@ package itesm.mx.planme;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -31,6 +30,7 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
     private ArrayList<Event> listAllEvents = new ArrayList<Event>();
     private ArrayList<Event> listMyEvents = new ArrayList<Event>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +44,8 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
             uid = intent.getStringExtra("uid");
         }
 
-        listAllEvents = showAllEvents();
-        listMyEvents = showMyEvents();
+        createListAllEvents();
+        createListMyEvents();
 
         adapterAllEvents = new EventAdapter(getApplicationContext(), listAllEvents);
         lv_planesActivos.setAdapter(adapterAllEvents);
@@ -59,7 +59,7 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
 
     }
 
-    public ArrayList<Event> showAllEvents() {
+    public void createListAllEvents() {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events");
 
@@ -71,6 +71,7 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
                     Event evento = postSnapshot.getValue(Event.class);
                     listAllEvents.add(evento);
                 }
+                adapterAllEvents.notifyDataSetChanged();
             }
 
             @Override
@@ -78,13 +79,11 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
                 Log.e("The read failed: ", databaseError.getMessage());
             }
         });
-
-        return listAllEvents;
     }
 
-    public ArrayList<Event> showMyEvents() {
+    public void createListMyEvents() {
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("events");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("participants").child(uid);
 
         ref.addValueEventListener(new ValueEventListener() {
 
@@ -92,10 +91,17 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Event evento = postSnapshot.getValue(Event.class);
-                    if(evento.getuid().equals(uid)) {
-                        listMyEvents.add(evento);
+                    boolean found = false;
+                    for(int i=0; i< listMyEvents.size(); i++){
+                        if(checkIfEqual(listMyEvents.get(i), evento)==true){
+                            found = true;
+                            break;
+                        }
                     }
+                    if(found==false)
+                        listMyEvents.add(evento);
                 }
+                adapterMyEvents.notifyDataSetChanged();
             }
 
             @Override
@@ -103,26 +109,25 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
                 Log.e("The read failed: ", databaseError.getMessage());
             }
         });
-        return listMyEvents;
     }
+
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
 
             case R.id.textView24:
-
                 Intent myIntent = new Intent(this, EventoActivity.class);
                 startActivity(myIntent);
                 break;
 
             case R.id.textView25:
-
                 Intent myIntento = new Intent(this, EventoActivity.class);
                 startActivity(myIntento);
                 break;
         }
     }
+
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
@@ -130,6 +135,7 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
         getMenuInflater().inflate(R.menu.menu_context, menu);
         super.onCreateContextMenu(menu, v, menuInfo);
     }
+
 
     @Override
     public boolean onContextItemSelected(MenuItem item){
@@ -141,27 +147,28 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
 
         switch (id) {
 
-            case R.id.delete:
-                FirebaseDatabase.getInstance().getReference("events").orderByChild("nombre").equalTo(evento.getNombre()).addListenerForSingleValueEvent(
+            case R.id.disjoin:
+                FirebaseDatabase.getInstance().getReference("participants").child(uid).orderByChild("nombre").equalTo(evento.getNombre()).addListenerForSingleValueEvent(
                         new ValueEventListener() {
+
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
                                     String key = postSnapshot.getKey();
                                     DatabaseReference ref = postSnapshot.getRef();
-                                    Toast.makeText(getApplicationContext(),key, Toast.LENGTH_LONG).show();
+                                    toastmsg(key);
                                     ref.setValue(null);
                                 }
-
+                                adapterMyEvents.notifyDataSetChanged();
                             }
+
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
                                 Log.w("TodoApp", "getUser:onCancelled", databaseError.toException());
                             }
                         });
                 listMyEvents.remove(evento);
-                adapterMyEvents.notifyDataSetChanged();
-                //Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_LONG).show();
+                toastmsg("Deleted");
                 break;
 
             case R.id.back:
@@ -171,12 +178,25 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
         return super.onContextItemSelected(item);
     }
 
+
+    public void toastmsg(String msg){
+        Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
+    }
+
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Event evento = (Event)parent.getItemAtPosition(position);
         Intent intent =  new Intent(this, EventoActivity.class);
         intent.putExtra("evento", evento);
-        //intent.putExtra("position", position);
+        intent.putExtra("uid",uid);
         startActivity(intent);
+    }
+
+    public boolean checkIfEqual(Event eventArray, Event evento){
+        boolean found = false;
+        if(eventArray.getNombre().equals(evento.getNombre()) && eventArray.getFecha().equals(evento.getFecha()) && eventArray.getHorario().equals(evento.getHorario()) && eventArray.getDescripcion().equals(evento.getDescripcion()) && eventArray.getAddress().equals(evento.getAddress()) && eventArray.getTipodeplan().equals(evento.getTipodeplan()))
+            found = true;
+        return found;
     }
 }
