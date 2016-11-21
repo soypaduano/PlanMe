@@ -57,6 +57,7 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
 
             case R.id.btn_verPerfil:
                 Intent myIntento1 = new Intent(this, MiPerfilActivity.class);
+                myIntento1.putExtra("uid", uid);
                 startActivity(myIntento1);
                 break;
 
@@ -66,5 +67,13 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
                         Toast.LENGTH_SHORT).show();
                 finish();
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(getApplicationContext(), "Signed Out",
+                Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

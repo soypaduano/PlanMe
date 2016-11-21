@@ -66,4 +66,8 @@
     <string name="settime">Set Time</string>
     <string name="setdate">Set Date</string>
     <string name="title_activity_maps">Map</string>
+    <string name="disjoin">Disjoin</string>
+    <string name="createby">Created by:</string>
+    <string name="editprofile">Edit Profile</string>
+    <string name="myprofile">My Profile</string>
 </resources>

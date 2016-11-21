@@ -2,7 +2,6 @@ package itesm.mx.planme;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,10 +9,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.text.format.DateFormat;
 import android.util.Base64;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -28,11 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
 import java.io.ByteArrayOutputStream;
-import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -56,7 +49,6 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
     DatePickerDialog.OnDateSetListener mDateSetListener;
     static final int TIME_DIALOG_ID = 0;
     static final int DATE_DIALOG_ID = 1;
-
 
     String[] categories;
 
@@ -125,24 +117,36 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         month = cal.get(Calendar.MONTH);
         day = cal.get(Calendar.DAY_OF_MONTH);
 
-
         mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                pHour = hourOfDay;
-                pMinute = minute;
-                updateDisplayTime();
+                pHour = cal.get(Calendar.HOUR_OF_DAY);
+                pMinute = cal.get(Calendar.MINUTE);
+                if(hourOfDay>=pHour && minute>=pMinute){
+                    pHour = hourOfDay;
+                    pMinute = minute;
+                    updateDisplayTime();
+                }
+                else{
+                    toastmsg("Time Invalid");
+                }
             }
         };
 
         mDateSetListener = new DatePickerDialog.OnDateSetListener(){
             public void onDateSet(DatePicker view, int pyear, int pmonth, int pday){
-                year = pyear;
-                month = pmonth;
-                day = pday;
-                updateDisplayDate();
+                year = cal.get(Calendar.YEAR);
+                month = cal.get(Calendar.MONTH);
+                day = cal.get(Calendar.DAY_OF_MONTH);
+                if(pyear>=year && pmonth>=month && pday>=day){
+                    year = pyear;
+                    month = pmonth;
+                    day = pday;
+                    updateDisplayDate();
+                }
+                else
+                    toastmsg("Date Invalid");
             }
         };
-
     }
 
     private void updateDisplayTime() {
@@ -153,14 +157,12 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         tv_date.setText(new StringBuilder().append(pad(day)).append("/").append(pad(month + 1)).append("/").append(pad(year)));
     }
 
-
     private static String pad(int c) {
         if (c >= 10)
             return String.valueOf(c);
         else
             return "0" + String.valueOf(c);
     }
-
 
     public void initSpinners(){
 
@@ -202,7 +204,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
                     finish();
                 }
                 else
-                    Toast.makeText(getApplicationContext(), "Missing values!!",Toast.LENGTH_SHORT).show();
+                    toastmsg("Missing values!!");
                 break;
 
             case R.id.btn_photo:
@@ -231,11 +233,9 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
                     }
                 }
                 else
-                    Toast.makeText(getApplicationContext(), "Address empty!!",Toast.LENGTH_SHORT).show();
+                    toastmsg("Address empty!!");
         }
     }
-    
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -258,6 +258,10 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
                 }
         }
 
+    }
+
+    public void toastmsg(String msg){
+        Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
     }
 
 
