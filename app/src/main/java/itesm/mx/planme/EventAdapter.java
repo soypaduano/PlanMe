@@ -3,7 +3,6 @@ package itesm.mx.planme;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +46,7 @@ public class EventAdapter extends ArrayAdapter<Event>{
 
         String encodedImage = event.getByteArray();
         byte[] image = Base64.decode(encodedImage, Base64.DEFAULT);
+
         if (image != null){
             Bitmap bmimage = BitmapFactory.decodeByteArray(image, 0, image.length);
             img_Foto.setImageBitmap(bmimage);

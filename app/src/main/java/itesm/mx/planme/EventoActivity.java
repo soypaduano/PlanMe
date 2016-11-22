@@ -203,41 +203,47 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+
                 for (DataSnapshot postSnapshotdad : snapshot.getChildren()) {
                     String keyUser = postSnapshotdad.getKey();
                     for (DataSnapshot postSnapshotchild : postSnapshotdad.getChildren()) {
                         Event getEvento = postSnapshotchild.getValue(Event.class);
-                        if(checkIfEqualEvent(getEvento, evento)==true){
+                        if (checkIfEqualEvent(getEvento, evento) == true) {
                             boolean found = false;
-                            for(int i=0; i<keyUsers.size(); i++){
-                                if(keyUsers.get(i).toString().equals(keyUser))
+                            for (int i = 0; i < keyUsers.size(); i++) {
+                                String s = keyUsers.get(i);
+                                if (keyUsers.get(i).equals(keyUser)) {
                                     found = true;
-                                break;
+                                    break;
+                                }
                             }
-                            if(found==false)
+                            if (found == false) {
                                 keyUsers.add(keyUser);
+                            }
                         }
                     }
                 }
-                for(int i=0; i<keyUsers.size(); i++){
-                    DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users").child(keyUsers.get(i));
 
+
+                    DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users");
                     ref2.addValueEventListener(new ValueEventListener() {
 
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                            Usuario user = snapshot.getValue(Usuario.class);
-                            boolean found = false;
-                            int i=0;
-                            for(; i< listParticipants.size(); i++) {
-                                if(checkIfExistUser(listParticipants.get(i), user)==true)
-                                    found = true;
-                                break;
-                            }
-                            if(found == false){
-                                listParticipants.add(user);
-                                tv_participants.setText("Participants: (" + listParticipants.size() + ")");
-                                adapterPart.notifyDataSetChanged();
+                            for (int i = 0; i < keyUsers.size(); i++) {
+                                Usuario user = snapshot.child(keyUsers.get(i)).getValue(Usuario.class);
+                                boolean found = false;
+                                for (int j = 0; j < listParticipants.size(); j++) {
+                                    if (checkIfExistUser(listParticipants.get(j), user) == true) {
+                                        found = true;
+                                        break;
+                                    }
+                                }
+                                if (found == false) {
+                                    listParticipants.add(user);
+                                    tv_participants.setText("Participants: (" + listParticipants.size() + ")");
+                                    adapterPart.notifyDataSetChanged();
+                                }
                             }
                         }
 
@@ -247,20 +253,21 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
                         }
                     });
                 }
-            }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.e("The read failed: ", databaseError.getMessage());
             }
         });
+
+
     }
 
     public boolean checkIfEqualEvent(Event getEvent, Event evento){
-        boolean found = false;
         if(getEvent.getNombre().equals(evento.getNombre()) && getEvent.getFecha().equals(evento.getFecha()) && getEvent.getHorario().equals(evento.getHorario()) && getEvent.getDescripcion().equals(evento.getDescripcion()) && getEvent.getAddress().equals(evento.getAddress()) && getEvent.getTipodeplan().equals(evento.getTipodeplan()))
-            found = true;
-        return found;
+            return true;
+        return false;
     }
 
     public boolean checkIfExistUser(Usuario getUser, Usuario user){

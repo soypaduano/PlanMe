@@ -162,35 +162,39 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 correo = String.valueOf(et_correo.getText());
 
                 if (isValidEmailAddress(correo) == true && (password1.equals(password2)) == true) {
-                    mAuth.createUserWithEmailAndPassword(correo, password1)
-                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+                    if(password1.length()>=6){
+                        mAuth.createUserWithEmailAndPassword(correo, password1)
+                                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
-                                    // If sign in fails, display a message to the user. If sign in succeeds
-                                    // the auth state listener will be notified and logic to handle the
-                                    // signed in user can be handled in the listener.
-                                    if (!task.isSuccessful()) {
-                                        toastmsg("Signup failed, try again");
-                                    } else {
-                                        int selectedId = radioSexGroup.getCheckedRadioButtonId();
-                                        radioSexButton = (RadioButton) findViewById(selectedId);
-                                        writeNewUser(mAuth.getCurrentUser().getUid(),
-                                                et_nombre.getText().toString(),
-                                                et_apellido.getText().toString(),
-                                                (tv_birthday.getText().toString()),
-                                                et_correo.getText().toString(),
-                                                et_telefono.getText().toString(),
-                                                radioSexButton.getText().toString()
-                                        );
-                                        Intent myIntent = new Intent(SignupActivity.this, BuscarOfrecerActivity.class);
-                                        myIntent.putExtra("uid", mAuth.getCurrentUser().getUid());
-                                        startActivity(myIntent);
-                                        finish();
+                                        // If sign in fails, display a message to the user. If sign in succeeds
+                                        // the auth state listener will be notified and logic to handle the
+                                        // signed in user can be handled in the listener.
+                                        if (!task.isSuccessful()) {
+                                            toastmsg("Signup failed, try again");
+                                        } else {
+                                            int selectedId = radioSexGroup.getCheckedRadioButtonId();
+                                            radioSexButton = (RadioButton) findViewById(selectedId);
+                                            writeNewUser(mAuth.getCurrentUser().getUid(),
+                                                    et_nombre.getText().toString(),
+                                                    et_apellido.getText().toString(),
+                                                    (tv_birthday.getText().toString()),
+                                                    et_correo.getText().toString(),
+                                                    et_telefono.getText().toString(),
+                                                    radioSexButton.getText().toString()
+                                            );
+                                            Intent myIntent = new Intent(SignupActivity.this, BuscarOfrecerActivity.class);
+                                            myIntent.putExtra("uid", mAuth.getCurrentUser().getUid());
+                                            startActivity(myIntent);
+                                            finish();
+                                        }
                                     }
-                                }
-                            });
+                                });
+                    }
+                    else
+                        toastmsg("Password must have at least 6 characters");
                 } else
                     toastmsg("Email or/and Password invalid");
         }
