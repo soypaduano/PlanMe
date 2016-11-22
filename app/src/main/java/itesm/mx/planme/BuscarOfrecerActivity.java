@@ -3,12 +3,17 @@ package itesm.mx.planme;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -18,6 +23,8 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
     private Button btn_signout;
 
     private String uid;
+    private String name;
+    private String surname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,8 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
         if(intent!=null){
             uid = intent.getStringExtra("uid");
         }
+
+        toastWelcome();
     }
 
     @Override
@@ -63,8 +72,7 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
 
             case R.id.button_signout:
                 FirebaseAuth.getInstance().signOut();
-                Toast.makeText(getApplicationContext(), "Signed Out",
-                        Toast.LENGTH_SHORT).show();
+                toastmsg("Signed Out");
                 finish();
         }
     }
@@ -72,8 +80,32 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onBackPressed(){
         FirebaseAuth.getInstance().signOut();
-        Toast.makeText(getApplicationContext(), "Signed Out",
-                Toast.LENGTH_SHORT).show();
+        toastmsg("Signed Out");
         finish();
+    }
+
+    public void toastWelcome(){
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(uid);
+
+        ref.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Usuario user = snapshot.getValue(Usuario.class);
+                name = user.getNombre();
+                surname = user.getApellido();
+                toastmsg("Welcome " + name + " " + surname + "!!");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("The read failed: ", databaseError.getMessage());
+            }
+        });
+    }
+
+    public void toastmsg(String msg){
+        Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_SHORT).show();
     }
 }

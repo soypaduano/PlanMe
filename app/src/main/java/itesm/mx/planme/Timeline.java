@@ -154,9 +154,9 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                                    String key = postSnapshot.getKey();
+                                    //String key = postSnapshot.getKey();
+                                    //toastmsg(key);
                                     DatabaseReference ref = postSnapshot.getRef();
-                                    toastmsg(key);
                                     ref.setValue(null);
                                 }
                                 adapterMyEvents.notifyDataSetChanged();
@@ -168,7 +168,7 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
                             }
                         });
                 listMyEvents.remove(evento);
-                toastmsg("Deleted");
+                toastmsg("Disjoined");
                 break;
 
             case R.id.back:
