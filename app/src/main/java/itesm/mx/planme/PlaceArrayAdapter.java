@@ -20,8 +20,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
-public class PlaceArrayAdapter
-        extends ArrayAdapter<PlaceArrayAdapter.PlaceAutocomplete> implements Filterable {
+public class PlaceArrayAdapter extends ArrayAdapter<PlaceArrayAdapter.PlaceAutocomplete> implements Filterable {
     private static final String TAG = "PlaceArrayAdapter";
     private GoogleApiClient mGoogleApiClient;
     private AutocompleteFilter mPlaceFilter;
