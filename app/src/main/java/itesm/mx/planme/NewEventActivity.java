@@ -8,10 +8,16 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,6 +27,15 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,14 +44,14 @@ import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 
 
-public class NewEventActivity extends AppCompatActivity implements View.OnClickListener{
+public class NewEventActivity extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener,
+        GoogleApiClient.ConnectionCallbacks{
 
     private static final int REQUEST_CODE = 1;
     private static final int MAP_CODE = 2;
     private Spinner sp_categorias;
 
     private TextView tv_time;
-    private TextView tv_place;
     private Button btn_settime;
     private TextView tv_date;
     private Button btn_setdate;
@@ -54,7 +69,6 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
 
     private EditText et_planname;
     private EditText et_descripcion;
-    private EditText et_place;
 
     private Button btn_publish;
     private Button btn_photo;
@@ -68,26 +82,44 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
     private FirebaseAuth mAuth;
 
     private String uid;
-    String time;
+
+    private static final String LOG_TAG = "MainActivity";
+    private static final int GOOGLE_API_CLIENT_ID = 0;
+    private AutoCompleteTextView mAutocompleteTextView;
+    private GoogleApiClient mGoogleApiClient;
+    private PlaceArrayAdapter mPlaceArrayAdapter;
+    private static final LatLngBounds BOUNDS_MOUNTAIN_VIEW = new LatLngBounds(
+            new LatLng(37.398160, -122.180831), new LatLng(37.430610, -121.972090));
+    private String place;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_event);
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .enableAutoManage(this, GOOGLE_API_CLIENT_ID, this)
+                .addConnectionCallbacks(this)
+                .build();
+        mAutocompleteTextView = (AutoCompleteTextView) findViewById(R.id
+                .autoCompleteTextView);
+        mAutocompleteTextView.setThreshold(3);
+        mAutocompleteTextView.setOnItemClickListener(mAutocompleteClickListener);
+        mPlaceArrayAdapter = new PlaceArrayAdapter(this, android.R.layout.simple_list_item_1,
+                BOUNDS_MOUNTAIN_VIEW, null);
+        mAutocompleteTextView.setAdapter(mPlaceArrayAdapter);
 
         sp_categorias = (Spinner) findViewById(R.id.sp_categoria);
         categories = getResources().getStringArray(R.array.array_categories);
         initSpinners();
 
         tv_time = (TextView)findViewById(R.id.textView_time);
-        et_place = (EditText) findViewById(R.id.editText_place);
-        tv_place = (TextView)findViewById(R.id.textView_place);
         btn_settime = (Button)findViewById(R.id.btn_settime);
         btn_settime.setOnClickListener(this);
         tv_date = (TextView)findViewById(R.id.textView_date);
         btn_setdate = (Button)findViewById(R.id.btn_setdate);
         btn_setdate.setOnClickListener(this);
-        tv_place.setOnClickListener(this);
 
         et_planname = (EditText)findViewById(R.id.editText_PlanName);
         et_descripcion = (EditText)findViewById(R.id.editText_description);
@@ -146,6 +178,33 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         };
     }
 
+    private AdapterView.OnItemClickListener mAutocompleteClickListener
+            = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            final PlaceArrayAdapter.PlaceAutocomplete item = mPlaceArrayAdapter.getItem(position);
+            final String placeId = String.valueOf(item.placeId);
+            Log.i(LOG_TAG, "Selected: " + item.description);
+            PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
+                    .getPlaceById(mGoogleApiClient, placeId);
+            placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
+            Log.i(LOG_TAG, "Fetching details for ID: " + item.placeId);
+        }
+    };
+
+    private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback
+            = new ResultCallback<PlaceBuffer>() {
+        @Override
+        public void onResult(PlaceBuffer places) {
+            if (!places.getStatus().isSuccess()) {
+                Log.e(LOG_TAG, "Place query did not complete. Error: " +
+                        places.getStatus().toString());
+                return;
+            }
+            // Selecting the first object buffer.
+        }
+    };
+
     private void updateDisplayTime() {
         tv_time.setText(new StringBuilder().append(pad(pHour)).append(":").append(pad(pMinute)));
     }
@@ -176,7 +235,6 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
                 String planname;
                 String description;
                 String time;
-                String place;
                 String plantype;
                 String date;
 
@@ -185,7 +243,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
                 time = tv_time.getText().toString();
                 date = tv_date.getText().toString();
                 plantype = categories[sp_categorias.getSelectedItemPosition()];
-                place = et_place.getText().toString();
+                place = mAutocompleteTextView.getText().toString();
 
                 String encodedImage = "";
 
@@ -218,19 +276,6 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
             case R.id.btn_setdate:
                 showDialog(DATE_DIALOG_ID);
                 break;
-
-            case R.id.textView_place:
-                String address = et_place.getText().toString();
-                if(!address.equals("")){
-                    Intent intentMap = new Intent(Intent.ACTION_VIEW);
-                    Uri myUri = Uri.parse("geo:0,0?q=" + address);
-                    intentMap.setData(myUri); //lat lng or address query
-                    if (intentMap.resolveActivity(getPackageManager()) != null) {
-                        startActivity(intentMap);
-                    }
-                }
-                else
-                    toastmsg("Address empty!!");
         }
     }
 
@@ -265,6 +310,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
     private void writeNewEvent(String nombre, String descripcion, String horario, String tipodeplan, String date, String address, String byteArray, String uid) {
         Event event = new Event(nombre, descripcion, horario, tipodeplan, date, address, byteArray, uid);
         mDatabase.child("events").push().setValue(event);
+        mDatabase.child("participants").child(uid).push().setValue(event);
     }
 
     @Override
@@ -279,4 +325,26 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
+    @Override
+    public void onConnected(Bundle bundle) {
+        mPlaceArrayAdapter.setGoogleApiClient(mGoogleApiClient);
+        Log.i(LOG_TAG, "Google Places API connected.");
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.e(LOG_TAG, "Google Places API connection failed with error code: "
+                + connectionResult.getErrorCode());
+
+        Toast.makeText(this,
+                "Google Places API connection failed with error code:" +
+                        connectionResult.getErrorCode(),
+                Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        mPlaceArrayAdapter.setGoogleApiClient(null);
+        Log.e(LOG_TAG, "Google Places API connection suspended.");
+    }
 }
