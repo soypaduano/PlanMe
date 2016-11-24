@@ -27,6 +27,8 @@ public class PlaceArrayAdapter extends ArrayAdapter<PlaceArrayAdapter.PlaceAutoc
     private LatLngBounds mBounds;
     private ArrayList<PlaceAutocomplete> mResultList;
 
+
+    //paduuu was here
     /**
      * Constructor
      *
