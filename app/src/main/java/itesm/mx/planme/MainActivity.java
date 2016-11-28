@@ -8,6 +8,11 @@ import android.widget.Button;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+
+    /* Pagina inicial */
+
+
+
     private Button btn_login;
     private Button btn_signup;
 

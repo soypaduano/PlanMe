@@ -19,6 +19,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    /* Pagina del Log In, aqui el usuario introduce su email y su password para poder
+     * acceder al sistema. */
+
+
+
     private Button btn_login;
     private EditText et_email;
     private EditText et_passwd;
@@ -42,7 +47,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btn_login.setOnClickListener(this);
         tv_forgotPass.setOnClickListener(this);
 
+        /* Instancia de Firebase, donde podemos trabajar la autorizacion de los usuarios */
+
         mAuth = FirebaseAuth.getInstance();
+
+
+        /* Metodo donde hacemos la autorizacion de Firebase, comprobamos si hay algun usuario actual unido */
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -65,10 +75,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         switch (view.getId()){
             case R.id.btn_login:
+
+                /* Obtenemos los datos introducidos por el usuario */
+
                 String correo;
                 String password;
                 correo = String.valueOf(et_email.getText());
                 password = String.valueOf(et_passwd.getText());
+
+                /* Hacemos comprobaciones de si esta vacio o no */
+
                 if((correo.isEmpty())!=true && (password.isEmpty())!=true){
                     mAuth.signInWithEmailAndPassword(correo, password)
                             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -79,13 +95,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     // If sign in fails, display a message to the user. If sign in succeeds
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.
+
+                                    /* Vemos si el usuario esta comprobado */
+
                                     if (task.isSuccessful()) {
+                                        /* Si esta, abrimos buscar ofrecer, y aparte, le mandamos el UID del usuario que se registro */
                                         Intent myIntento = new Intent(LoginActivity.this, BuscarOfrecerActivity.class);
                                         myIntento.putExtra("uid",mAuth.getCurrentUser().getUid());
                                         startActivity(myIntento);
                                         finish();
                                     }
+
                                     else {
+                                        /* Si el usuario esta mal, mandamos un toast avisando que hay un error. */
                                         Log.w(TAG, "signInWithEmail:failed", task.getException());
                                         Toast.makeText(getApplicationContext(), "SignIn Failed, try again",
                                                 Toast.LENGTH_SHORT).show();
@@ -106,11 +128,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    /* Llamamos al metodo de comprobar si hay algun usuario unido */
     @Override
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
+
+    /* Quitamos el metodo de comprobar si hay algun usuario unido */
 
     @Override
     public void onStop() {
