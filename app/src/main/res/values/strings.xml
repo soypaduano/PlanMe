@@ -70,4 +70,5 @@
     <string name="createby">Created by:</string>
     <string name="editprofile">Edit Profile</string>
     <string name="myprofile">My Profile</string>
+    <string name="changepassword">Change Password</string>
 </resources>

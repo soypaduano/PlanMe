@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/createPlan"
-        android:id="@+id/btn_crearPlan"
+        android:id="@+id/btn_createPlan"
         android:layout_marginTop="167dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -22,19 +22,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/lookPlan"
-        android:id="@+id/btn_buscarPlan"
+        android:id="@+id/btn_findPlan"
         android:layout_marginTop="87dp"
-        android:layout_below="@+id/btn_crearPlan"
+        android:layout_below="@+id/btn_createPlan"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:id="@+id/btn_verPerfil"
+        android:id="@+id/btn_showProfile"
         android:layout_alignParentBottom="true"
         android:background="@drawable/verperfil"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/btn_buscarPlan"
+        android:layout_toEndOf="@+id/btn_findPlan"
         android:layout_marginLeft="30dp" />
 
     <Button

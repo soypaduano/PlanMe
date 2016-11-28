@@ -16,7 +16,7 @@
         android:id="@+id/textView"
         android:layout_marginStart="26dp"
         android:textSize="18dp"
-        android:layout_alignBottom="@+id/et_nombre"
+        android:layout_alignBottom="@+id/et_name"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:id="@+id/textView3"
         android:textSize="18dp"
         android:layout_marginTop="27dp"
-        android:layout_below="@+id/et_apellido"
+        android:layout_below="@+id/et_surname"
         android:layout_alignStart="@+id/textView5" />
 
     <TextView
@@ -52,7 +52,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et_nombre"
+        android:id="@+id/et_name"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/textView" />
@@ -60,7 +60,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et_apellido"
+        android:id="@+id/et_surname"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/textView"
         android:layout_toEndOf="@+id/textView2" />
@@ -68,13 +68,13 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et_correo"
+        android:id="@+id/et_email"
         android:layout_marginTop="5dp"
         android:inputType="textEmailAddress"
         android:layout_below="@+id/textView3"
         android:autoText="false"
         android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/et_nombre" />
+        android:layout_alignStart="@+id/et_name" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,17 +83,17 @@
         android:id="@+id/textView20"
         android:layout_marginTop="20dp"
         android:textSize="18dp"
-        android:layout_below="@+id/et_correo"
+        android:layout_below="@+id/et_email"
         android:layout_alignStart="@+id/textView5" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et_telefono"
-        android:layout_below="@+id/et_correo"
+        android:id="@+id/et_phonenumber"
+        android:layout_below="@+id/et_email"
         android:layout_marginTop="5dp"
         android:inputType="phone"
-        android:layout_alignEnd="@+id/et_correo"
+        android:layout_alignEnd="@+id/et_email"
         android:layout_toEndOf="@+id/textView20" />
 
     <TextView
@@ -101,7 +101,7 @@
         android:layout_height="wrap_content"
         android:text="@string/sex"
         android:id="@+id/textView21"
-        android:layout_below="@+id/et_telefono"
+        android:layout_below="@+id/et_phonenumber"
         android:layout_alignStart="@+id/textView20"
         android:textSize="18dp"
         android:layout_marginTop="20dp" />
@@ -134,7 +134,7 @@
         android:inputType="textPassword"
         android:layout_below="@+id/textView21"
         android:layout_marginLeft="9dp"
-        android:layout_alignEnd="@+id/et_telefono"
+        android:layout_alignEnd="@+id/et_phonenumber"
         android:layout_toEndOf="@+id/textView26" />
 
     <EditText
@@ -186,7 +186,7 @@
         android:text="@string/setdate"
         android:id="@+id/button_setdate"
         android:layout_above="@+id/textView5"
-        android:layout_alignEnd="@+id/et_correo" />
+        android:layout_alignEnd="@+id/et_email" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -194,5 +194,26 @@
         android:id="@+id/tv_birthday"
         android:layout_alignTop="@+id/textView3"
         android:layout_alignStart="@+id/et_password" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_password2"
+        android:layout_alignEnd="@+id/et_password2">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/photo"
+            android:id="@+id/btn_photo"
+            android:layout_gravity="center_vertical" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView_photo"
+            android:layout_marginLeft="80dp" />
+    </LinearLayout>
 
 </RelativeLayout>

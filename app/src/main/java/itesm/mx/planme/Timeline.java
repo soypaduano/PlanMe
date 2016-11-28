@@ -21,8 +21,8 @@ import java.util.ArrayList;
 
 public class Timeline extends AppCompatActivity implements  View.OnClickListener, AdapterView.OnItemClickListener{
 
-    private ListView lv_planesActivos;
-    private ListView lv_misPlanes;
+    private ListView lv_activeEvents;
+    private ListView lv_myEvents;
 
     private String uid;
 
@@ -36,8 +36,8 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
 
-        lv_misPlanes = (ListView) findViewById(R.id.lv_misPlanes);
-        lv_planesActivos = (ListView) findViewById(R.id.lv_planesActivos);
+        lv_myEvents = (ListView) findViewById(R.id.lv_myEvents);
+        lv_activeEvents = (ListView) findViewById(R.id.lv_activeEvents);
 
         Intent intent = getIntent();
         if(intent!=null){
@@ -48,14 +48,14 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
         createListMyEvents();
 
         adapterAllEvents = new EventAdapter(getApplicationContext(), listAllEvents);
-        lv_planesActivos.setAdapter(adapterAllEvents);
-        lv_planesActivos.setOnItemClickListener(this);
+        lv_activeEvents.setAdapter(adapterAllEvents);
+        lv_activeEvents.setOnItemClickListener(this);
 
         adapterMyEvents = new EventAdapter(getApplicationContext(), listMyEvents);
-        lv_misPlanes.setAdapter(adapterMyEvents);
-        lv_misPlanes.setOnItemClickListener(this);
+        lv_myEvents.setAdapter(adapterMyEvents);
+        lv_myEvents.setOnItemClickListener(this);
 
-        registerForContextMenu(lv_misPlanes);
+        registerForContextMenu(lv_myEvents);
 
     }
 
@@ -148,7 +148,7 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
         switch (id) {
 
             case R.id.disjoin:
-                FirebaseDatabase.getInstance().getReference("participants").child(uid).orderByChild("nombre").equalTo(evento.getNombre()).addListenerForSingleValueEvent(
+                FirebaseDatabase.getInstance().getReference("participants").child(uid).orderByChild("nombre").equalTo(evento.getname()).addListenerForSingleValueEvent(
                         new ValueEventListener() {
 
                             @Override
@@ -195,7 +195,7 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
 
     public boolean checkIfEqual(Event eventArray, Event evento){
         boolean found = false;
-        if(eventArray.getNombre().equals(evento.getNombre()) && eventArray.getFecha().equals(evento.getFecha()) && eventArray.getHorario().equals(evento.getHorario()) && eventArray.getDescripcion().equals(evento.getDescripcion()) && eventArray.getAddress().equals(evento.getAddress()) && eventArray.getTipodeplan().equals(evento.getTipodeplan()))
+        if(eventArray.getname().equals(evento.getname()) && eventArray.getdate().equals(evento.getdate()) && eventArray.gettime().equals(evento.gettime()) && eventArray.getdescription().equals(evento.getdescription()) && eventArray.getAddress().equals(evento.getAddress()) && eventArray.getplantype().equals(evento.getplantype()))
             found = true;
         return found;
     }

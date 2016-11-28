@@ -12,9 +12,9 @@ public class CambiarPasswordActivity extends AppCompatActivity implements View.O
 
 
     EditText et_actualPassword;
-    EditText et_nuevaPassword;
-    EditText et_confirmarNuevaPassword;
-    Button btn_confirmarCambioPassword;
+    EditText et_newPassword;
+    EditText et_confirmNewPassword;
+    Button btn_confirmChangePassword;
 
 
 
@@ -24,9 +24,9 @@ public class CambiarPasswordActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_cambiar_password);
 
         et_actualPassword = (EditText) findViewById(R.id.et_actualPassword);
-        et_nuevaPassword = (EditText) findViewById(R.id.et_nuevaPassword);
-        et_confirmarNuevaPassword = (EditText) findViewById(R.id.et_confirmarNuevaPassword);
-        btn_confirmarCambioPassword= (Button) findViewById(R.id.btn_confirmarCambioPassword);
+        et_newPassword = (EditText) findViewById(R.id.et_newPassword);
+        et_confirmNewPassword = (EditText) findViewById(R.id.et_confirmNewPassword);
+        btn_confirmChangePassword= (Button) findViewById(R.id.btn_confirmChangePassword);
 
 
     }
@@ -34,8 +34,8 @@ public class CambiarPasswordActivity extends AppCompatActivity implements View.O
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btn_confirmarCambioPassword:
-                Toast.makeText(getApplicationContext(),"Se actualizo contraseña",Toast.LENGTH_SHORT).show();
+            case R.id.btn_confirmChangePassword:
+                Toast.makeText(getApplicationContext(),"Password Updated",Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }

@@ -73,13 +73,13 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Usuario user = snapshot.getValue(Usuario.class);
-                tv_name.setText("Name: " + user.getNombre());
-                tv_surname.setText("Surname: " + user.getApellido());
-                tv_email.setText("Email: " + user.getCorreo());
-                tv_phonenumber.setText("Phone Number: " + user.getNumero());
+                tv_name.setText("Name: " + user.getname());
+                tv_surname.setText("Surname: " + user.getsurname());
+                tv_email.setText("Email: " + user.getemail());
+                tv_phonenumber.setText("Phone Number: " + user.getnumber());
                 final Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
-                String bdayS = user.getFechanacimiento();
+                String bdayS = user.getbirthday();
                 int bdayI = Integer.parseInt(bdayS.substring(bdayS.length()-4));
                 tv_age.setText("Age: " + String.valueOf(year-bdayI));
             }

@@ -4,24 +4,26 @@ package itesm.mx.planme;
 public class Usuario {
 
     private String uid;
-    private String nombre;
-    private String apellido;
-    private String fechanacimiento;
-    private String correo;
-    private String numero;
+    private String name;
+    private String surname;
+    private String birthday;
+    private String email;
+    private String number;
     private String sexo;
+    private String byteArray;
 
     public Usuario() {
     }
 
-    public Usuario(String uid, String nombre, String apellido, String fechanacimiento, String correo, String numero, String sexo) {
+    public Usuario(String uid, String name, String surname, String birthday, String email, String number, String sexo, String byteArray) {
         this.uid = uid;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechanacimiento = fechanacimiento;
-        this.correo = correo;
-        this.numero = numero;
+        this.name = name;
+        this.surname = surname;
+        this.birthday = birthday;
+        this.email = email;
+        this.number = number;
         this.sexo = sexo;
+        this.byteArray = byteArray;
     }
 
     public String getUid() {
@@ -32,44 +34,44 @@ public class Usuario {
         this.uid = uid;
     }
 
-    public String getFechanacimiento() {
-        return fechanacimiento;
+    public String getbirthday() {
+        return birthday;
     }
 
-    public void setFechanacimiento(String fechanacimiento) {
-        this.fechanacimiento = fechanacimiento;
+    public void setbirthday(String birthday) {
+        this.birthday = birthday;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getname() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setname(String name) {
+        this.name = name;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getsurname() {
+        return surname;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setsurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getemail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setemail(String email) {
+        this.email = email;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getnumber() {
+        return number;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setnumber(String number) {
+        this.number = number;
     }
 
     public String getSexo() {
@@ -78,5 +80,13 @@ public class Usuario {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+
+    public String getByteArray() {
+        return byteArray;
+    }
+
+    public void setByteArray(String byteArray) {
+        this.byteArray = byteArray;
     }
 }

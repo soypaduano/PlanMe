@@ -27,8 +27,8 @@ import java.util.ArrayList;
 
 public class EventoActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btn_llamar;
-    private Button btn_unirAlPlan;
+    private Button btn_calling;
+    private Button btn_join;
     private Event evento;
     private TextView tv_name;
     private TextView tv_description;
@@ -55,8 +55,8 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
 
         lv_participants = (ListView)findViewById(R.id.listView_participants);
 
-        btn_llamar = (Button) findViewById(R.id.btn_llamar);
-        btn_unirAlPlan = (Button) findViewById(R.id.btn_unirse);
+        btn_calling = (Button) findViewById(R.id.btn_calling);
+        btn_join = (Button) findViewById(R.id.btn_join);
 
         tv_name = (TextView)findViewById(R.id.textView_nameEvent);
         tv_description = (TextView)findViewById(R.id.textView_description2);
@@ -69,19 +69,19 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
 
         img_photoEvent = (ImageView)findViewById(R.id.imageView_photoEvent);
 
-        btn_llamar.setOnClickListener(this);
-        btn_unirAlPlan.setOnClickListener(this);
+        btn_calling.setOnClickListener(this);
+        btn_join.setOnClickListener(this);
 
         Intent intent = getIntent();
 
         if(intent!=null){
             evento = (Event)intent.getSerializableExtra("evento");
             uid = intent.getStringExtra("uid");
-            tv_name.setText(evento.getNombre());
-            tv_description.setText(evento.getDescripcion());
+            tv_name.setText(evento.getname());
+            tv_description.setText(evento.getdescription());
             tv_place.setText(evento.getAddress());
-            tv_time.setText(evento.getHorario());
-            tv_date.setText(evento.getFecha());
+            tv_time.setText(evento.gettime());
+            tv_date.setText(evento.getdate());
 
             String encodedImage = evento.getByteArray();
             byte[] image = Base64.decode(encodedImage, Base64.DEFAULT);
@@ -97,7 +97,7 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     Usuario user = snapshot.child(evento.getuid()).getValue(Usuario.class);
-                    creatorName = user.getNombre();
+                    creatorName = user.getname();
                     tv_creatorname.setText(creatorName);
                 }
 
@@ -122,13 +122,13 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
 
         switch (view.getId()){
-            case R.id.btn_llamar:
+            case R.id.btn_calling:
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse(creatorNumber));
                 startActivity(intent);
                 break;
 
-            case R.id.btn_unirse:
+            case R.id.btn_join:
                 toastmsg("te has unido al plan");
                 mDatabase.child("participants").child(uid).push().setValue(evento);
                 break;
@@ -164,7 +164,7 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Event eventoget = postSnapshot.getValue(Event.class);
                     if(checkIfEqualEvent(eventoget, evento)==true){
-                        btn_unirAlPlan.setVisibility(View.INVISIBLE);
+                        btn_join.setVisibility(View.INVISIBLE);
                     }
                 }
             }
@@ -185,7 +185,7 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Usuario user = snapshot.getValue(Usuario.class);
-                creatorNumber = "tel:" + user.getNumero();
+                creatorNumber = "tel:" + user.getnumber();
             }
 
             @Override
@@ -265,13 +265,13 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public boolean checkIfEqualEvent(Event getEvent, Event evento){
-        if(getEvent.getNombre().equals(evento.getNombre()) && getEvent.getFecha().equals(evento.getFecha()) && getEvent.getHorario().equals(evento.getHorario()) && getEvent.getDescripcion().equals(evento.getDescripcion()) && getEvent.getAddress().equals(evento.getAddress()) && getEvent.getTipodeplan().equals(evento.getTipodeplan()))
+        if(getEvent.getname().equals(evento.getname()) && getEvent.getdate().equals(evento.getdate()) && getEvent.gettime().equals(evento.gettime()) && getEvent.getdescription().equals(evento.getdescription()) && getEvent.getAddress().equals(evento.getAddress()) && getEvent.getplantype().equals(evento.getplantype()))
             return true;
         return false;
     }
 
     public boolean checkIfExistUser(Usuario getUser, Usuario user){
-        if(getUser.getCorreo().equals(user.getCorreo()))
+        if(getUser.getemail().equals(user.getemail()))
             return true;
         return false;
     }

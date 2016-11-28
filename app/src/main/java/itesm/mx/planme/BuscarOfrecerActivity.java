@@ -17,9 +17,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btn_crearPlan;
-    private Button btn_buscarPlan;
-    private Button btn_verPerfil;
+    private Button btn_createPlan;
+    private Button btn_findPlan;
+    private Button btn_showProfile;
     private Button btn_signout;
 
     private String uid;
@@ -31,13 +31,13 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar_ofrecer);
 
-        btn_buscarPlan = (Button) findViewById(R.id.btn_buscarPlan);
-        btn_crearPlan = (Button) findViewById(R.id.btn_crearPlan);
-        btn_verPerfil = (Button) findViewById(R.id.btn_verPerfil);
+        btn_findPlan = (Button) findViewById(R.id.btn_findPlan);
+        btn_createPlan = (Button) findViewById(R.id.btn_createPlan);
+        btn_showProfile = (Button) findViewById(R.id.btn_showProfile);
         btn_signout = (Button)findViewById(R.id.button_signout);
-        btn_crearPlan.setOnClickListener(this);
-        btn_buscarPlan.setOnClickListener(this);
-        btn_verPerfil.setOnClickListener(this);
+        btn_createPlan.setOnClickListener(this);
+        btn_findPlan.setOnClickListener(this);
+        btn_showProfile.setOnClickListener(this);
         btn_signout.setOnClickListener(this);
 
         Intent intent = getIntent();
@@ -52,19 +52,19 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btn_crearPlan:
+            case R.id.btn_createPlan:
                 Intent myIntent = new Intent(this, NewEventActivity.class);
                 myIntent.putExtra("uid", uid);
                 startActivity(myIntent);
                 break;
 
-            case R.id.btn_buscarPlan:
+            case R.id.btn_findPlan:
                 Intent myIntento = new Intent(this, Timeline.class);
                 myIntento.putExtra("uid", uid);
                 startActivity(myIntento);
                 break;
 
-            case R.id.btn_verPerfil:
+            case R.id.btn_showProfile:
                 Intent myIntento1 = new Intent(this, MiPerfilActivity.class);
                 myIntento1.putExtra("uid", uid);
                 startActivity(myIntento1);
@@ -93,8 +93,8 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Usuario user = snapshot.getValue(Usuario.class);
-                name = user.getNombre();
-                surname = user.getApellido();
+                name = user.getname();
+                surname = user.getsurname();
                 toastmsg("Welcome " + name + " " + surname + "!!");
             }
 
