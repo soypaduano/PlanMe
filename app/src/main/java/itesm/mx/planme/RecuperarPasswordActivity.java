@@ -7,8 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseUser;
+
 public class RecuperarPasswordActivity extends AppCompatActivity implements View.OnClickListener{
 
+    //Atributos vistas
     private Button btn_getPass;
     private EditText et_email;
 
@@ -27,7 +30,7 @@ public class RecuperarPasswordActivity extends AppCompatActivity implements View
 
         String email = et_email.getText().toString();
 
-
+        //TO-DO enviar correo para recuperarPassword
 
         Toast.makeText(getApplicationContext(), R.string.toastMsgGetPass,Toast.LENGTH_LONG).show();
         finish();
