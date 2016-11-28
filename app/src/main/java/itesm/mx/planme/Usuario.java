@@ -3,6 +3,7 @@ package itesm.mx.planme;
 
 public class Usuario {
 
+    //Atributos
     private String uid;
     private String name;
     private String surname;
@@ -15,6 +16,7 @@ public class Usuario {
     public Usuario() {
     }
 
+    //Constructor con valores de inicialización indicados
     public Usuario(String uid, String name, String surname, String birthday, String email, String number, String sexo, String byteArray) {
         this.uid = uid;
         this.name = name;
@@ -26,67 +28,78 @@ public class Usuario {
         this.byteArray = byteArray;
     }
 
-    public String getUid() {
-        return uid;
-    }
 
+    //Setters
     public void setUid(String uid) {
         this.uid = uid;
-    }
-
-    public String getbirthday() {
-        return birthday;
     }
 
     public void setbirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public String getname() {
-        return name;
-    }
-
     public void setname(String name) {
         this.name = name;
-    }
-
-    public String getsurname() {
-        return surname;
     }
 
     public void setsurname(String surname) {
         this.surname = surname;
     }
 
-    public String getemail() {
-        return email;
-    }
-
     public void setemail(String email) {
         this.email = email;
-    }
-
-    public String getnumber() {
-        return number;
     }
 
     public void setnumber(String number) {
         this.number = number;
     }
 
-    public String getSexo() {
-        return sexo;
+    public void setByteArray(String byteArray) {
+        this.byteArray = byteArray;
     }
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
+
+
+    //Getters
+
+    public String getname() {
+        return name;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+
+    public String getbirthday() {
+        return birthday;
+    }
+
+    public String getsurname() {
+        return surname;
+    }
+
+    public String getemail() {
+        return email;
+    }
+
+
+    public String getnumber() {
+        return number;
+    }
+
+
+    public String getSexo() {
+        return sexo;
+    }
+
+
     public String getByteArray() {
         return byteArray;
     }
 
-    public void setByteArray(String byteArray) {
-        this.byteArray = byteArray;
-    }
 }
