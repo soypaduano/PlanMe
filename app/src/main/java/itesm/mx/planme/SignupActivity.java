@@ -107,12 +107,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         btn_register.setTypeface(type);
 
 
-
-
-
-
-
-
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
