@@ -17,11 +17,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnClickListener{
 
+    //Atributos vistas
     private Button btn_createPlan;
     private Button btn_findPlan;
     private Button btn_showProfile;
     private Button btn_signout;
 
+    //Atributos
     private String uid;
     private String name;
     private String surname;
@@ -84,6 +86,7 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
         finish();
     }
 
+    //Toast que da bienvenida al usuario que se recien se loguea
     public void toastWelcome(){
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(uid);
