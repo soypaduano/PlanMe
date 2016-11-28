@@ -15,7 +15,6 @@
         android:text="@string/name"
         android:id="@+id/textView"
         android:layout_marginStart="26dp"
-        android:textSize="18dp"
         android:layout_alignBottom="@+id/et_name"
         android:layout_alignParentStart="true" />
 

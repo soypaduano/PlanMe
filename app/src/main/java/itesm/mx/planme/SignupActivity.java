@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -94,6 +95,23 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         btn_register = (Button) findViewById(R.id.btn_registrate);
         btn_register.setOnClickListener(this);
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
+
+        et_surname.setTypeface(type);
+        et_name.setTypeface(type);
+        et_email.setTypeface(type);
+        et_phonenumber.setTypeface(type);
+        btn_setdate.setTypeface(type);
+        btn_photo.setTypeface(type);
+        btn_register.setTypeface(type);
+
+
+
+
+
+
+
 
         mAuth = FirebaseAuth.getInstance();
 

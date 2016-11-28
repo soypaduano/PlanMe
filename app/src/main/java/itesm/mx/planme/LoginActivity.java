@@ -1,6 +1,7 @@
 package itesm.mx.planme;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,6 +47,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tv_forgotPass = (TextView) findViewById(R.id.tv_forgotPass);
         btn_login.setOnClickListener(this);
         tv_forgotPass.setOnClickListener(this);
+
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
+        btn_login.setTypeface(type);
+        et_email.setTypeface(type);
+        tv_forgotPass.setTypeface(type);
+
+
 
         /* Instancia de Firebase, donde podemos trabajar la autorizacion de los usuarios */
 

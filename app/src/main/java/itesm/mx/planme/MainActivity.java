@@ -2,6 +2,7 @@ package itesm.mx.planme;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btn_signup = (Button) findViewById(R.id.btn_signup);
         btn_signup.setOnClickListener(this);
         btn_login.setOnClickListener(this);
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
+        btn_login.setTypeface(type);
+        btn_signup.setTypeface(type);
 
     }
 
