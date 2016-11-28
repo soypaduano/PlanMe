@@ -33,40 +33,42 @@ import java.util.Calendar;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //Atributos vistas
     private EditText et_name;
     private EditText et_surname;
     private EditText et_email;
     private EditText et_phonenumber;
     private EditText et_passwd;
     private EditText et_passwd2;
-    private TextView tv_birthday;
-    private Button btn_setdate;
 
-    private ImageView img_photo;
+    private TextView tv_birthday;
+
+    private Button btn_setdate;
+    private Button btn_register;
     private Button btn_photo;
 
+    private RadioGroup radioSexGroup;
+    private RadioButton radioSexButton;
+
+    private ImageView img_photo;
+
+    //Atributos
     private Bitmap bitmap;
-    private byte[] byteArray;
     private String encodedImage;
 
-    private static final int REQUEST_CODE = 1;
+    private byte[] byteArray;
 
     private int year;
     private int month;
     private int day;
     DatePickerDialog.OnDateSetListener mDateSetListener;
-    static final int DATE_DIALOG_ID = 1;
-
-    private Button btn_register;
-
-    private RadioGroup radioSexGroup;
-    private RadioButton radioSexButton;
-
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
     private DatabaseReference mDatabase;
 
+    //Constantes
+    static final int DATE_DIALOG_ID = 1;
+    private static final int REQUEST_CODE = 1;
     public static final String TAG = "SignUp";
 
     @Override
@@ -238,7 +240,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 }
     }
 
-
+    /* Metodo que verifica que el email que digitó el usuario sea valido*/
     public boolean isValidEmailAddress(String email) {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
@@ -246,7 +248,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         return m.matches();
     }
 
-
+    /* Metodo que crea un nuevo usuario en la base de datos */
     private void writeNewUser(String uid, String name, String surname, String fechanacimiento, String email, String numero, String sexo, String byteArray) {
         Usuario user = new Usuario(uid, name, surname, fechanacimiento, email, numero, sexo, byteArray);
         mDatabase.child("users").child(uid).setValue(user);
