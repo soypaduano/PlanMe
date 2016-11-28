@@ -100,14 +100,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-
                                     // If sign in fails, display a message to the user. If sign in succeeds
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.
 
                                     /* Vemos si el usuario esta comprobado */
 
-                                    if (task.isSuccessful()) {
+                                    if (task.isSuccessful()==true) {
                                         /* Si esta, abrimos buscar ofrecer, y aparte, le mandamos el UID del usuario que se registro */
                                         Intent myIntento = new Intent(LoginActivity.this, BuscarOfrecerActivity.class);
                                         myIntento.putExtra("uid",mAuth.getCurrentUser().getUid());

@@ -69,7 +69,15 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Event evento = postSnapshot.getValue(Event.class);
-                    listAllEvents.add(evento);
+                    boolean found = false;
+                    for (int i = 0; i < listAllEvents.size(); i++) {
+                        if (checkIfEqual(listAllEvents.get(i), evento) == true) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found == false)
+                        listAllEvents.add(evento);
                 }
                 adapterAllEvents.notifyDataSetChanged();
             }
@@ -148,7 +156,7 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
         switch (id) {
 
             case R.id.disjoin:
-                FirebaseDatabase.getInstance().getReference("participants").child(uid).orderByChild("nombre").equalTo(evento.getname()).addListenerForSingleValueEvent(
+                FirebaseDatabase.getInstance().getReference("participants").child(uid).orderByChild("name").equalTo(evento.getname()).addListenerForSingleValueEvent(
                         new ValueEventListener() {
 
                             @Override

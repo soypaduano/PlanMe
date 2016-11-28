@@ -162,16 +162,9 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
 
         mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                pHour = cal.get(Calendar.HOUR_OF_DAY);
-                pMinute = cal.get(Calendar.MINUTE);
-                if(hourOfDay>=pHour && minute>=pMinute){
                     pHour = hourOfDay;
                     pMinute = minute;
                     updateDisplayTime();
-                }
-                else{
-                    toastmsg("Time Invalid");
-                }
             }
         };
 
@@ -180,11 +173,21 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
                 year = cal.get(Calendar.YEAR);
                 month = cal.get(Calendar.MONTH);
                 day = cal.get(Calendar.DAY_OF_MONTH);
-                if(pyear>=year && pmonth>=month && pday>=day){
-                    year = pyear;
-                    month = pmonth;
-                    day = pday;
-                    updateDisplayDate();
+                if(pyear>=year){
+                    if(pmonth==month && pday>=day){
+                        year = pyear;
+                        month = pmonth;
+                        day = pday;
+                        updateDisplayDate();
+                    }
+                    else if(pmonth>month) {
+                        year = pyear;
+                        month = pmonth;
+                        day = pday;
+                        updateDisplayDate();
+                    }
+                    else
+                        toastmsg("Date Invalid");
                 }
                 else
                     toastmsg("Date Invalid");

@@ -230,6 +230,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                                 toastmsg("Missing values!!");
                                         }
                                     }
+
                                 });
                     }
                     else
@@ -281,5 +282,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         }
         return null;
     }
+
+
 
 }
