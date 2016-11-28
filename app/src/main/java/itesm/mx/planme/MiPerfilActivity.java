@@ -22,9 +22,11 @@ import org.w3c.dom.Text;
 import java.util.Calendar;
 
 public class MiPerfilActivity extends AppCompatActivity implements View.OnClickListener {
-    
+
+    //Atributos
     private String uid;
 
+    //Atributos vista
     private TextView tv_name;
     private TextView tv_surname;
     private TextView tv_age;
@@ -63,9 +65,11 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
-    
+
+    /* Metodo que carga los datos del usuario logueado desde Firebase*/
     public void getUser(){
 
+        //Aquí se referencia a la base de datos y se especifica de qué usuario se necesita la información
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(uid);
 
         ref.addValueEventListener(new ValueEventListener() {
