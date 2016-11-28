@@ -79,16 +79,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     // If sign in fails, display a message to the user. If sign in succeeds
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.
-                                    if (!task.isSuccessful()) {
-                                        Log.w(TAG, "signInWithEmail:failed", task.getException());
-                                        Toast.makeText(getApplicationContext(), "SignIn Failed, try again",
-                                                Toast.LENGTH_SHORT).show();
-                                    }
-                                    else {
+                                    if (task.isSuccessful()) {
                                         Intent myIntento = new Intent(LoginActivity.this, BuscarOfrecerActivity.class);
                                         myIntento.putExtra("uid",mAuth.getCurrentUser().getUid());
                                         startActivity(myIntento);
                                         finish();
+                                    }
+                                    else {
+                                        Log.w(TAG, "signInWithEmail:failed", task.getException());
+                                        Toast.makeText(getApplicationContext(), "SignIn Failed, try again",
+                                                Toast.LENGTH_SHORT).show();
+
                                     }
                                 }
                             });

@@ -37,11 +37,11 @@ public class EventAdapter extends ArrayAdapter<Event>{
         ImageView img_Foto = (ImageView) convertView.findViewById(R.id.imageView_foto);
 
         Event event = getItem(position);
-        tv_planname.setText("Event name: " + event.getNombre());
-        tv_description.setText("Description: " + event.getDescripcion());
-        tv_time.setText("Time: " + event.getHorario());
+        tv_planname.setText("Event name: " + event.getname());
+        tv_description.setText("Description: " + event.getdescription());
+        tv_time.setText("Time: " + event.gettime());
         tv_place.setText("Place: " + event.getAddress());
-        tv_plantype.setText("Type: " + event.getTipodeplan());
+        tv_plantype.setText("Type: " + event.getplantype());
         tv_uid.setText("UID creator: " + event.getuid());
 
         String encodedImage = event.getByteArray();

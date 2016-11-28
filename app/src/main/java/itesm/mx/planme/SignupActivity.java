@@ -2,20 +2,21 @@ package itesm.mx.planme;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,21 +28,28 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
+import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText et_nombre;
-    private EditText et_apellido;
-    private EditText et_correo;
-    private EditText et_telefono;
+    private EditText et_name;
+    private EditText et_surname;
+    private EditText et_email;
+    private EditText et_phonenumber;
     private EditText et_passwd;
     private EditText et_passwd2;
     private TextView tv_birthday;
     private Button btn_setdate;
+
+    private ImageView img_photo;
+    private Button btn_photo;
+
+    private Bitmap bitmap;
+    private byte[] byteArray;
+    private String encodedImage;
+
+    private static final int REQUEST_CODE = 1;
 
     private int year;
     private int month;
@@ -49,7 +57,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     DatePickerDialog.OnDateSetListener mDateSetListener;
     static final int DATE_DIALOG_ID = 1;
 
-    private Button btn_registrar;
+    private Button btn_register;
 
     private RadioGroup radioSexGroup;
     private RadioButton radioSexButton;
@@ -66,20 +74,24 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        et_apellido = (EditText) findViewById(R.id.et_apellido);
-        et_nombre = (EditText) findViewById(R.id.et_nombre);
-        et_correo = (EditText) findViewById(R.id.et_correo);
-        et_telefono = (EditText) findViewById(R.id.et_telefono);
+        et_surname = (EditText) findViewById(R.id.et_surname);
+        et_name = (EditText) findViewById(R.id.et_name);
+        et_email = (EditText) findViewById(R.id.et_email);
+        et_phonenumber = (EditText) findViewById(R.id.et_phonenumber);
         et_passwd = (EditText) findViewById(R.id.et_password);
         et_passwd2 = (EditText) findViewById(R.id.et_password2);
         tv_birthday = (TextView) findViewById(R.id.tv_birthday);
         btn_setdate = (Button) findViewById(R.id.button_setdate);
         btn_setdate.setOnClickListener(this);
+        img_photo = (ImageView)findViewById(R.id.imageView_photo);
+
+        btn_photo = (Button)findViewById(R.id.btn_photo);
+        btn_photo.setOnClickListener(this);
 
         radioSexGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
-        btn_registrar = (Button) findViewById(R.id.btn_registrate);
-        btn_registrar.setOnClickListener(this);
+        btn_register = (Button) findViewById(R.id.btn_registrate);
+        btn_register.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -143,7 +155,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-
     @Override
     public void onClick(View view) {
 
@@ -152,18 +163,25 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 showDialog(DATE_DIALOG_ID);
                 break;
 
+            case R.id.btn_photo:
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if(intent.resolveActivity(getPackageManager()) != null){
+                    startActivityForResult(intent, REQUEST_CODE);
+                }
+                break;
+
             case R.id.btn_registrate:
                 String password1;
                 String password2;
-                String correo;
+                String email;
 
                 password1 = String.valueOf(et_passwd.getText());
                 password2 = String.valueOf(et_passwd2.getText());
-                correo = String.valueOf(et_correo.getText());
+                email = String.valueOf(et_email.getText());
 
-                if (isValidEmailAddress(correo) == true && (password1.equals(password2)) == true) {
+                if (isValidEmailAddress(email) == true && (password1.equals(password2)) == true) {
                     if(password1.length()>=6){
-                        mAuth.createUserWithEmailAndPassword(correo, password1)
+                        mAuth.createUserWithEmailAndPassword(email, password1)
                                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -177,18 +195,25 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                         } else {
                                             int selectedId = radioSexGroup.getCheckedRadioButtonId();
                                             radioSexButton = (RadioButton) findViewById(selectedId);
-                                            writeNewUser(mAuth.getCurrentUser().getUid(),
-                                                    et_nombre.getText().toString(),
-                                                    et_apellido.getText().toString(),
-                                                    (tv_birthday.getText().toString()),
-                                                    et_correo.getText().toString(),
-                                                    et_telefono.getText().toString(),
-                                                    radioSexButton.getText().toString()
-                                            );
-                                            Intent myIntent = new Intent(SignupActivity.this, BuscarOfrecerActivity.class);
-                                            myIntent.putExtra("uid", mAuth.getCurrentUser().getUid());
-                                            startActivity(myIntent);
-                                            finish();
+                                            String uid = mAuth.getCurrentUser().getUid();
+                                            String name = et_name.getText().toString();
+                                            String surname = et_surname.getText().toString();
+                                            String birthday = tv_birthday.getText().toString();
+                                            String email = et_email.getText().toString();
+                                            String phonenumber = et_phonenumber.getText().toString();
+                                            String sex = radioSexButton.getText().toString();
+                                            if(!uid.equals("") && !name.equals("") && !surname.equals("")
+                                            && !birthday.equals("") && !email.equals("") && !phonenumber.equals("") && !sex.equals("")
+                                                    && byteArray!=null) {
+                                                encodedImage = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+                                                writeNewUser(uid, name, surname, birthday, email, phonenumber, sex, encodedImage);
+                                                Intent myIntent = new Intent(SignupActivity.this, BuscarOfrecerActivity.class);
+                                                myIntent.putExtra("uid", mAuth.getCurrentUser().getUid());
+                                                startActivity(myIntent);
+                                                finish();
+                                            }
+                                            else
+                                                toastmsg("Missing values!!");
                                         }
                                     }
                                 });
@@ -200,22 +225,39 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    public boolean isValidEmailAddress(String correo) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+                if(requestCode== REQUEST_CODE && resultCode==RESULT_OK){
+                    bitmap = (Bitmap)data.getExtras().get("data");
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byteArray = stream.toByteArray();
+                    img_photo.setImageBitmap(bitmap);
+                }
+    }
+
+
+    public boolean isValidEmailAddress(String email) {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-        java.util.regex.Matcher m = p.matcher(correo);
+        java.util.regex.Matcher m = p.matcher(email);
         return m.matches();
     }
 
-    private void writeNewUser(String uid, String nombre, String apellido, String fechanacimiento, String correo, String numero, String sexo) {
-        Usuario user = new Usuario(uid, nombre, apellido, fechanacimiento, correo, numero, sexo);
+
+    private void writeNewUser(String uid, String name, String surname, String fechanacimiento, String email, String numero, String sexo, String byteArray) {
+        Usuario user = new Usuario(uid, name, surname, fechanacimiento, email, numero, sexo, byteArray);
         mDatabase.child("users").child(uid).setValue(user);
         toastmsg("User added to the DB");
     }
 
+
     public void toastmsg(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
+
 
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -225,4 +267,5 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         }
         return null;
     }
+
 }

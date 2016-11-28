@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class Event implements Serializable{
 
-    private String nombre;
-    private String descripcion;
-    private String horario;
-    private String tipodeplan;
-    private String fecha;
+    private String name;
+    private String description;
+    private String time;
+    private String plantype;
+    private String date;
     private String address;
     private String byteArray;
     private String uid;
@@ -16,20 +16,20 @@ public class Event implements Serializable{
     public Event() {
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getdate() {
+        return date;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setdate(String date) {
+        this.date = date;
     }
 
-    public Event(String nombre, String descripcion, String horario, String tipodeplan, String fecha, String address, String byteArray, String uid) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.horario = horario;
-        this.tipodeplan = tipodeplan;
-        this.fecha = fecha;
+    public Event(String name, String description, String time, String plantype, String date, String address, String byteArray, String uid) {
+        this.name = name;
+        this.description = description;
+        this.time = time;
+        this.plantype = plantype;
+        this.date = date;
         this.address = address;
         this.byteArray = byteArray;
         this.uid = uid;
@@ -43,36 +43,36 @@ public class Event implements Serializable{
         this.address = address;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getname() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setname(String name) {
+        this.name = name;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getdescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setdescription(String description) {
+        this.description = description;
     }
 
-    public String getHorario() {
-        return horario;
+    public String gettime() {
+        return time;
     }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
+    public void settime(String time) {
+        this.time = time;
     }
 
-    public String getTipodeplan() {
-        return tipodeplan;
+    public String getplantype() {
+        return plantype;
     }
 
-    public void setTipodeplan(String tipodeplan) {
-        this.tipodeplan = tipodeplan;
+    public void setplantype(String plantype) {
+        this.plantype = plantype;
     }
 
     public String getByteArray() {

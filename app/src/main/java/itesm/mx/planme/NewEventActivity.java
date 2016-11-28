@@ -49,7 +49,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
 
     private static final int REQUEST_CODE = 1;
     private static final int MAP_CODE = 2;
-    private Spinner sp_categorias;
+    private Spinner sp_categories;
 
     private TextView tv_time;
     private Button btn_settime;
@@ -68,7 +68,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
     String[] categories;
 
     private EditText et_planname;
-    private EditText et_descripcion;
+    private EditText et_description;
 
     private Button btn_publish;
     private Button btn_photo;
@@ -110,7 +110,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
                 BOUNDS_MOUNTAIN_VIEW, null);
         mAutocompleteTextView.setAdapter(mPlaceArrayAdapter);
 
-        sp_categorias = (Spinner) findViewById(R.id.sp_categoria);
+        sp_categories = (Spinner) findViewById(R.id.sp_categoria);
         categories = getResources().getStringArray(R.array.array_categories);
         initSpinners();
 
@@ -122,7 +122,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         btn_setdate.setOnClickListener(this);
 
         et_planname = (EditText)findViewById(R.id.editText_PlanName);
-        et_descripcion = (EditText)findViewById(R.id.editText_description);
+        et_description = (EditText)findViewById(R.id.editText_description);
 
         img_photo = (ImageView)findViewById(R.id.imageView_photo);
 
@@ -223,7 +223,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
     public void initSpinners(){
 
         ArrayAdapter<String> adapterCategories = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-        sp_categorias.setAdapter(adapterCategories);
+        sp_categories.setAdapter(adapterCategories);
 
     }
 
@@ -239,10 +239,10 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
                 String date;
 
                 planname = et_planname.getText().toString();
-                description = et_descripcion.getText().toString();
+                description = et_description.getText().toString();
                 time = tv_time.getText().toString();
                 date = tv_date.getText().toString();
-                plantype = categories[sp_categorias.getSelectedItemPosition()];
+                plantype = categories[sp_categories.getSelectedItemPosition()];
                 place = mAutocompleteTextView.getText().toString();
 
                 String encodedImage = "";
@@ -307,8 +307,8 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
-    private void writeNewEvent(String nombre, String descripcion, String horario, String tipodeplan, String date, String address, String byteArray, String uid) {
-        Event event = new Event(nombre, descripcion, horario, tipodeplan, date, address, byteArray, uid);
+    private void writeNewEvent(String nombre, String description, String horario, String tipodeplan, String date, String address, String byteArray, String uid) {
+        Event event = new Event(nombre, description, horario, tipodeplan, date, address, byteArray, uid);
         mDatabase.child("events").push().setValue(event);
         mDatabase.child("participants").child(uid).push().setValue(event);
     }
