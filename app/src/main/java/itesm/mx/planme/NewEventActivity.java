@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -130,6 +131,19 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         btn_publish = (Button)findViewById(R.id.btn_publish);
         btn_photo.setOnClickListener(this);
         btn_publish.setOnClickListener(this);
+
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
+
+        tv_time.setTypeface(type);
+        btn_settime.setTypeface(type);
+        btn_photo.setTypeface(type);
+        tv_date.setTypeface(type);
+        btn_setdate.setTypeface(type);
+        et_planname.setTypeface(type);
+        et_description.setTypeface(type);
+        btn_publish.setTypeface(type);
+
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();

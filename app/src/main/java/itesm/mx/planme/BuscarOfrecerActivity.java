@@ -1,6 +1,7 @@
 package itesm.mx.planme;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import static itesm.mx.planme.R.id.btn_login;
 
 public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -41,6 +44,14 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
         btn_findPlan.setOnClickListener(this);
         btn_showProfile.setOnClickListener(this);
         btn_signout.setOnClickListener(this);
+
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
+        btn_findPlan.setTypeface(type);
+        btn_createPlan.setTypeface(type);
+        btn_showProfile.setTypeface(type);
+        btn_signout.setTypeface(type);
+
 
         Intent intent = getIntent();
 
