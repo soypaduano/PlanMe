@@ -32,7 +32,7 @@
     <string name="date">Fecha</string>
     <string name="settime">Set Hora</string>
     <string name="setdate">Set Fecha</string>
-    <string name="disjoin">Disunete</string>
+    <string name="disjoin">Salir del Plan</string>
     <string name="createby">Creato desde:</string>
     <string name="editprofile">Edita Perfil</string>
     <string name="myprofile">Mi Perfil</string>
@@ -58,4 +58,6 @@
     <string name="newPass">Nueva Contrasena</string>
     <string name="confirmPass">Confirmar Contrasena</string>
     <string name="choosephoto">Seleciona Foto:</string>
+    <string name="dateevent">"Fecha: "</string>
+    <string name="wrongemail">Correo Incorrecto, ententa otra vez</string>
 </resources>
