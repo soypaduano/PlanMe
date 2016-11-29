@@ -196,11 +196,11 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
         int id = item.getItemId();
 
-        Event evento = listMyEvents.get(info.position);
 
         switch (id) {
 
             case R.id.disjoin:
+                final Event evento = listMyEvents.get(info.position);
                 FirebaseDatabase.getInstance().getReference("participants").child(uid).orderByChild("name").equalTo(evento.getname()).addListenerForSingleValueEvent(
                         new ValueEventListener() {
 
@@ -213,6 +213,7 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
                                     ref.setValue(null);
                                 }
                                 adapterMyEvents.notifyDataSetChanged();
+
                             }
 
                             @Override
@@ -221,11 +222,53 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
                             }
                         });
                 listMyEvents.remove(evento);
-                toastmsg("Disjoined");
+                toastmsg(getString(R.string.disjoined));
+                /*FirebaseDatabase.getInstance().getReference("events").orderByChild("uid").addListenerForSingleValueEvent(
+                        new ValueEventListener() {
+
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                                    Event findEvent = postSnapshot.getValue(Event.class);
+                                    if(findEvent.getname().equals(evento.getname()) && findEvent.getuid().equals(uid)){
+                                        DatabaseReference ref = postSnapshot.getRef();
+                                        ref.setValue(null);
+                                    }
+                                    adapterAllEvents.notifyDataSetChanged();
+                                    adapterMyEvents.notifyDataSetChanged();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.w("TodoApp", "getUser:onCancelled", databaseError.toException());
+                            }
+                        });
+                FirebaseDatabase.getInstance().getReference("participants").orderByKey().addListenerForSingleValueEvent(
+                        new ValueEventListener() {
+
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()){
+                                    Event findEvent = postSnapshot.getValue(Event.class);
+                                    if (findEvent!=null){
+                                        if(findEvent.getname().equals(evento.getname()) && findEvent.getuid().equals(uid)){
+                                            DatabaseReference ref = postSnapshot.getRef();
+                                            ref.setValue(null);
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.w("TodoApp", "getUser:onCancelled", databaseError.toException());
+                            }
+                        });*/
                 break;
 
             case R.id.back:
-                Toast.makeText(getApplicationContext(), "Back", Toast.LENGTH_LONG).show();
+                toastmsg("Back");
                 break;
         }
         return super.onContextItemSelected(item);
