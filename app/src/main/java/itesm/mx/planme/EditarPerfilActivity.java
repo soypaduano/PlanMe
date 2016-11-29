@@ -88,6 +88,7 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
             case R.id.btn_changePassword:
                 Intent myIntento = new Intent(this, CambiarPasswordActivity.class);
                 startActivity(myIntento);
+                finish();
                 break;
         }
     }
@@ -122,11 +123,11 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
                 et_editName.setText( user.getname());
                 et_editSurname.setText( user.getsurname());
                 et_editPhoneNumber.setText( user.getnumber());
-                String encodedImage = user.getByteArray();
-                byte[] image = Base64.decode(encodedImage, Base64.DEFAULT);
+                encodedImage = user.getByteArray();
+                byteArray = Base64.decode(encodedImage, Base64.DEFAULT);
 
-                if (image != null){
-                    Bitmap bmimage = BitmapFactory.decodeByteArray(image, 0, image.length);
+                if (byteArray != null){
+                    Bitmap bmimage = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                     iv_profilePhoto.setImageBitmap(bmimage);
                 }
 
