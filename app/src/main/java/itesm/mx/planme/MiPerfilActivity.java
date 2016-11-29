@@ -52,6 +52,8 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
         btn_editProfile = (Button)findViewById(R.id.button_editProfile);
         img_photo = (ImageView)findViewById(R.id.imageView_profile);
 
+        btn_editProfile.setOnClickListener(this);
+
         Intent intent = getIntent();
 
         if(intent!=null)
