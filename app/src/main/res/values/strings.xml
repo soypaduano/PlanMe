@@ -87,4 +87,7 @@
     <string name="profilenumber">"Phone Number: "</string>
     <string name="profileage">"Age: "</string>
     <string name="save">Save</string>
+    <string name="currentPassword">Current password</string>
+    <string name="confirmPass">Confirm password</string>
+    <string name="newPass">New password</string>
 </resources>

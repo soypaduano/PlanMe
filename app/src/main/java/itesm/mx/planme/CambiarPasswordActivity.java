@@ -19,7 +19,6 @@ public class CambiarPasswordActivity extends AppCompatActivity implements View.O
     /* Cambiar password  */
 
 
-    EditText et_actualPassword;
     EditText et_newPassword;
     EditText et_confirmNewPassword;
     Button btn_confirmChangePassword;
@@ -40,11 +39,10 @@ public class CambiarPasswordActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cambiar_password);
 
-        et_actualPassword = (EditText) findViewById(R.id.et_actualPassword);
         et_newPassword = (EditText) findViewById(R.id.et_newPassword);
-        et_confirmNewPassword = (EditText) findViewById(R.id.et_confirmNewPassword);
+        et_confirmNewPassword = (EditText) findViewById(R.id.et_confirmPassword);
         btn_confirmChangePassword= (Button) findViewById(R.id.btn_confirmChangePassword);
-
+        btn_confirmChangePassword.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
