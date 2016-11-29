@@ -54,8 +54,7 @@
     <string name="title_activity_maps">Mapa</string>
     <string name="toastMsgGetPass">Se te ha enviado un correo para recuperar tu contraseña</string>
     <string name="save">Guardar</string>
-    <string name="currentPassword">Contraseña actual</string>
-    <string name="confirmPass">Confirmar contraseña</string>
-    <string name="name">nombre</string>
-    <string name="newPass">Nueva contraseña</string>
+    <string name="man">Hombre</string>
+    <string name="newPass">Nueva Contrasena</string>
+    <string name="confirmPass">Confirma Contrasena</string>
 </resources>
