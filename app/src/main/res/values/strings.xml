@@ -86,4 +86,5 @@
     <string name="profileemail">"Email: "</string>
     <string name="profilenumber">"Phone Number: "</string>
     <string name="profileage">"Age: "</string>
+    <string name="save">Save</string>
 </resources>

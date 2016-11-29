@@ -54,4 +54,7 @@
     <string name="profileemail">"Email: "</string>
     <string name="profilenumber">"Phone Number: "</string>
     <string name="profileage">"Age: "</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="toastMsgGetPass">We will send you a email with instructions to      resete your password</string>
+    <string name="save">Save</string>
 </resources>
