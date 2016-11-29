@@ -74,6 +74,10 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         btn_changePassword.setTypeface(type);
         btn_changePhoto.setTypeface(type);
         btn_save.setTypeface(type);
+        et_editName.setTypeface(type);
+        et_editPhoneNumber.setTypeface(type);
+        et_editSurname.setTypeface(type);
+
         tv_editProfileTitle.setTextColor(Color.parseColor("#84ab7d"));
 
         iv_profilePhoto = (ImageView) findViewById(R.id.imageView_profile);
