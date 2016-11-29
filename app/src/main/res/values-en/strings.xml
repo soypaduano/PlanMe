@@ -62,6 +62,4 @@
     <string name="newPass">New password</string>
     <string name="msgForgotPass"></string>
     <string name="choosephoto">Choose Photo:</string>
-    <string name="dateevent">"Date: "</string>
-    <string name="wrongemail">Email Incorrect, try again</string>
 </resources>

@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/password"
-        android:id="@+id/textView17"
+        android:id="@+id/tvLoginPassword"
         android:layout_below="@+id/et_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -35,7 +35,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/et_passwd"
-        android:layout_below="@+id/textView17"
+        android:layout_below="@+id/tvLoginPassword"
         android:layout_centerHorizontal="true"
         android:text="123456" />
 
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email"
-        android:id="@+id/textViewYourEmail"
+        android:id="@+id/tvLoginEmail"
         android:layout_above="@+id/et_email"
         android:layout_centerHorizontal="true"
         android:textSize="19dp" />
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
-        android:layout_above="@+id/textViewYourEmail"
+        android:layout_above="@+id/tvLoginEmail"
         android:layout_alignEnd="@+id/et_email"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/et_email"

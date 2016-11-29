@@ -91,6 +91,4 @@
     <string name="confirmPass">Confirm password</string>
     <string name="newPass">New password</string>
     <string name="choosephoto">Choose Photo:</string>
-    <string name="dateevent">"Date: "</string>
-    <string name="wrongemail">Email Incorrect, try again</string>
 </resources>

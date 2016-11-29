@@ -12,24 +12,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/createPlan"
-        android:id="@+id/btn_createPlan"
-        android:layout_marginTop="167dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lookPlan"
-        android:id="@+id/btn_findPlan"
-        android:layout_marginTop="87dp"
-        android:layout_below="@+id/btn_createPlan"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="SIGN-OUT"
         android:id="@+id/button_signout"
         android:layout_alignParentBottom="true"
@@ -43,4 +25,33 @@
         android:layout_marginLeft="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/btn_createPlan"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="45dp"
+        android:id="@+id/view" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/createPlan"
+        android:id="@+id/btn_createPlan"
+        android:layout_marginTop="90dp"
+        style="@android:style/Widget.Material.Light.Button.Toggle"
+        android:elevation="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lookPlan"
+        android:id="@+id/btn_findPlan"
+        style="@android:style/Widget.Material.Light.Button.Toggle"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
