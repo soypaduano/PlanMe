@@ -36,6 +36,7 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
 
     ImageView iv_profilePhoto;
 
+    //Atributos
     private String uid;
     private Usuario user;
     private Bitmap bitmap;
