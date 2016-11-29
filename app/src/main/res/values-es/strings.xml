@@ -57,4 +57,5 @@
     <string name="man">Hombre</string>
     <string name="newPass">Nueva Contrasena</string>
     <string name="confirmPass">Confirmar Contrasena</string>
+    <string name="choosephoto">Seleciona Foto:</string>
 </resources>

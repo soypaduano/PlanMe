@@ -61,4 +61,5 @@
     <string name="confirmPass">Confirm password</string>
     <string name="newPass">New password</string>
     <string name="msgForgotPass"></string>
+    <string name="choosephoto">Choose Photo:</string>
 </resources>
