@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.vision.text.Text;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,6 +33,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText et_email;
     private EditText et_passwd;
     private TextView tv_forgotPass;
+    private TextView tv_yourEmail;
+    private TextView tv_yourPassword;
+
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -48,6 +52,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         et_passwd = (EditText) findViewById(R.id.et_passwd);
         et_email = (EditText) findViewById(R.id.et_email);
         tv_forgotPass = (TextView) findViewById(R.id.tv_forgotPass);
+        tv_yourEmail = (TextView) findViewById(R.id.tvLoginEmail);
+        tv_yourPassword = (TextView) findViewById(R.id.tvLoginPassword);
+
+
+
+
         btn_login.setOnClickListener(this);
         tv_forgotPass.setOnClickListener(this);
 
@@ -56,6 +66,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btn_login.setTypeface(type);
         et_email.setTypeface(type);
         tv_forgotPass.setTypeface(type);
+        tv_yourEmail.setTypeface(type);
+        tv_yourPassword.setTypeface(type);
 
 
 
@@ -100,6 +112,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 password = String.valueOf(et_passwd.getText());
 
                 /* Hacemos comprobaciones de si esta vacio o no */
+
+                if(correo.equals("") || password.equals("")){
+
+                    Toast.makeText(getApplicationContext(), "Error: campos vacios",
+                            Toast.LENGTH_SHORT).show();
+
+                }
 
                 if((correo.isEmpty())!=true && (password.isEmpty())!=true){
                     mAuth.signInWithEmailAndPassword(correo, password)
