@@ -3,6 +3,8 @@ package itesm.mx.planme;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +32,10 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
     EditText et_editName;
     EditText et_editSurname;
     EditText et_editPhoneNumber;
+
+
+    TextView tv_editProfileTitle;
+
 
     Button btn_changePhoto;
     Button btn_changePassword;
@@ -59,10 +66,19 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         btn_changePassword = (Button) findViewById(R.id.btn_changePassword);
         btn_save = (Button) findViewById(R.id.btn_save);
 
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
+
+        tv_editProfileTitle.setTypeface(type);
+        btn_changePassword.setTypeface(type);
+        btn_changePhoto.setTypeface(type);
+        btn_save.setTypeface(type);
+        tv_editProfileTitle.setTextColor(Color.parseColor("#84ab7d"));
+
         iv_profilePhoto = (ImageView) findViewById(R.id.imageView_profile);
         btn_changePhoto.setOnClickListener(this);
         btn_changePassword.setOnClickListener(this);
         btn_save.setOnClickListener(this);
+
 
         if(getIntent()!=null)
             uid = getIntent().getStringExtra("uid");

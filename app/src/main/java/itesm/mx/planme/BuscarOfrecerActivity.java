@@ -1,6 +1,7 @@
 package itesm.mx.planme;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -51,6 +52,7 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
         btn_createPlan.setTypeface(type);
         btn_showProfile.setTypeface(type);
         btn_signout.setTypeface(type);
+        btn_signout.setTextColor(Color.parseColor("#d42c30"));
 
 
         Intent intent = getIntent();
