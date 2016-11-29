@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -34,6 +36,7 @@ public class EventAdapter extends ArrayAdapter<Event>{
         TextView tv_time = (TextView) convertView.findViewById(R.id.textView_time);
         TextView tv_place = (TextView) convertView.findViewById(R.id.textView_place);
         TextView tv_plantype = (TextView)convertView.findViewById(R.id.textView_plantype);
+        TextView tv_date = (TextView)convertView.findViewById(R.id.textView_dateevent);
         //TextView tv_uid = (TextView)convertView.findViewById(R.id.textView_uidcreator);
         ImageView img_Foto = (ImageView) convertView.findViewById(R.id.imageView_foto);
 
@@ -42,12 +45,14 @@ public class EventAdapter extends ArrayAdapter<Event>{
         String name = getContext().getResources().getString(R.string.eventname) + event.getname();
         String description = getContext().getResources().getString(R.string.descriptionevent) + event.getdescription();
         String time = getContext().getResources().getString(R.string.timeevent) + event.gettime();
+        String date = getContext().getResources().getString(R.string.dateevent) + event.getdate();
         String place = getContext().getResources().getString(R.string.placeevent) + event.getAddress();
         String type = getContext().getResources().getString(R.string.typeevent) + event.getplantype();
 
         tv_planname.setText(name);
         tv_description.setText(description);
         tv_time.setText(time);
+        tv_date.setText(date);
         tv_place.setText(place);
         tv_plantype.setText(type);
         //tv_uid.setText("UID creator: " + event.getuid());

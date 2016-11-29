@@ -27,7 +27,7 @@ public class RecuperarPasswordActivity extends AppCompatActivity implements View
 
         btn_getPass = (Button) findViewById(R.id.btn_login);
         et_email = (EditText) findViewById(R.id.et_email);
-        tv_tuEmail = (TextView) findViewById(R.id.tvLoginEmail);
+        tv_tuEmail = (TextView) findViewById(R.id.tvEmail);
         btn_getPass.setOnClickListener(this);
 
         Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
@@ -45,14 +45,26 @@ public class RecuperarPasswordActivity extends AppCompatActivity implements View
 
         String email = et_email.getText().toString();
 
-        mAuth.sendPasswordResetEmail(email);
-        //TO-DO enviar correo para recuperarPassword
+        if(!email.equals("") && isValidEmailAddress(email)==true){
+            mAuth.sendPasswordResetEmail(email);
+            //TO-DO enviar correo para recuperarPassword
 
-        Toast.makeText(getApplicationContext(), R.string.toastMsgGetPass,Toast.LENGTH_LONG).show();
-        finish();
+            toastmsg(getString(R.string.toastMsgGetPass));
+            finish();
+        }
+
+        else
+            toastmsg(getString(R.string.wrongemail));
     }
 
-    public void prova(){
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+    }
 
+    public void toastmsg(String msg) {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 }

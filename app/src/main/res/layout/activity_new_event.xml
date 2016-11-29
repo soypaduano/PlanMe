@@ -14,7 +14,8 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="30dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:textColor="#84ab7d" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -159,7 +160,8 @@
         android:id="@+id/textView41"
         android:gravity="center"
         android:textStyle="bold"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textSize="17sp" />
 
     <AutoCompleteTextView
         android:layout_width="match_parent"
@@ -173,7 +175,8 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/linearLayout7"
         android:layout_alignParentStart="true"
-        android:layout_height="150dp">
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp">
 
         <Button
             android:layout_width="wrap_content"
@@ -185,7 +188,7 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_height="match_parent"
             android:id="@+id/imageView_photo"
             android:layout_marginLeft="80dp" />
     </LinearLayout>
@@ -197,6 +200,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_width="150dp" />
+        android:layout_width="150dp"
+        android:layout_marginTop="15dp" />
 
 </LinearLayout>

@@ -58,5 +58,4 @@
     <string name="newPass">Nueva Contrasena</string>
     <string name="confirmPass">Confirmar Contrasena</string>
     <string name="choosephoto">Seleciona Foto:</string>
-    <string name="emptyField">Error: campos vacios</string>
 </resources>
