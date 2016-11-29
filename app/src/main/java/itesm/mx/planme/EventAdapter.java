@@ -37,6 +37,8 @@ public class EventAdapter extends ArrayAdapter<Event>{
         TextView tv_place = (TextView) convertView.findViewById(R.id.textView_place);
         TextView tv_plantype = (TextView)convertView.findViewById(R.id.textView_plantype);
         TextView tv_date = (TextView)convertView.findViewById(R.id.textView_dateevent);
+
+        //
         //TextView tv_uid = (TextView)convertView.findViewById(R.id.textView_uidcreator);
         ImageView img_Foto = (ImageView) convertView.findViewById(R.id.imageView_foto);
 
