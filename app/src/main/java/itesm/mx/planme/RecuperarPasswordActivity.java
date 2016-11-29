@@ -27,7 +27,7 @@ public class RecuperarPasswordActivity extends AppCompatActivity implements View
 
         btn_getPass = (Button) findViewById(R.id.btn_login);
         et_email = (EditText) findViewById(R.id.et_email);
-        tv_tuEmail = (TextView) findViewById(R.id.tvLoginEmail);
+        tv_tuEmail = (TextView) findViewById(R.id.tvEmail);
         btn_getPass.setOnClickListener(this);
 
         Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");

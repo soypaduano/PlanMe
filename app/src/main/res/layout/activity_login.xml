@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email"
-        android:id="@+id/tvLoginEmail"
+        android:id="@+id/tvEmail"
         android:layout_above="@+id/et_email"
         android:layout_centerHorizontal="true"
         android:textSize="19dp" />
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
-        android:layout_above="@+id/tvLoginEmail"
+        android:layout_above="@+id/tvEmail"
         android:layout_alignEnd="@+id/et_email"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/et_email"
