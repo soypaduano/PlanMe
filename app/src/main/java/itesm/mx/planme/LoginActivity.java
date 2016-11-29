@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 if(correo.equals("") || password.equals("")){
 
-                    Toast.makeText(getApplicationContext(), "Error: campos vacios",
+                    Toast.makeText(getApplicationContext(), getString(R.string.emptyField),
                             Toast.LENGTH_SHORT).show();
 
                 }

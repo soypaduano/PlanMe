@@ -91,4 +91,5 @@
     <string name="confirmPass">Confirm password</string>
     <string name="newPass">New password</string>
     <string name="choosephoto">Choose Photo:</string>
+    <string name="emptyField">Error: empty fields</string>
 </resources>
