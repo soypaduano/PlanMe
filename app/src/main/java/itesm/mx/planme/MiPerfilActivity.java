@@ -3,6 +3,7 @@ package itesm.mx.planme;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.os.IInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,6 +54,17 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
         img_photo = (ImageView)findViewById(R.id.imageView_profile);
 
         btn_editProfile.setOnClickListener(this);
+
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
+
+        tv_name.setTypeface(type);
+        tv_surname.setTypeface(type);
+        tv_age.setTypeface(type);
+        tv_phonenumber.setTypeface(type);
+        tv_email.setTypeface(type);
+        btn_editProfile.setTypeface(type);
+
 
         Intent intent = getIntent();
 

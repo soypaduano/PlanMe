@@ -37,6 +37,7 @@ import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.vision.text.Text;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -52,6 +53,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
     private static final int MAP_CODE = 2;
     private Spinner sp_categories;
 
+    private TextView tv_tituloPlan;
     private TextView tv_time;
     private Button btn_settime;
     private TextView tv_date;
@@ -115,6 +117,7 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         categories = getResources().getStringArray(R.array.array_categories);
         initSpinners();
 
+        tv_tituloPlan = (TextView) findViewById(R.id.textView_nameEvent);
         tv_time = (TextView)findViewById(R.id.textView_time);
         btn_settime = (Button)findViewById(R.id.btn_settime);
         btn_settime.setOnClickListener(this);
@@ -143,6 +146,9 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         et_planname.setTypeface(type);
         et_description.setTypeface(type);
         btn_publish.setTypeface(type);
+        tv_tituloPlan.setTypeface(type);
+
+
 
 
         mAuth = FirebaseAuth.getInstance();
