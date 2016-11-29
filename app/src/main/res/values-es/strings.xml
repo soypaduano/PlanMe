@@ -58,4 +58,8 @@
     <string name="newPass">Nueva Contrasena</string>
     <string name="confirmPass">Confirmar Contrasena</string>
     <string name="choosephoto">Seleciona Foto:</string>
+    <string name="name">Nombre</string>
+    <string name="wrongemail">Correo incorrecto, trata otra vez</string>
+    <string name="dateevent">"Fecha: "</string>
+    <string name="emptyField">Campos vacios</string>
 </resources>
