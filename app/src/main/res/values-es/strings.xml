@@ -36,4 +36,18 @@
     <string name="createby">Creato desde:</string>
     <string name="editprofile">Edita Perfil</string>
     <string name="myprofile">Mi Perfil</string>
+    <string name="myevents">Mis Planes</string>
+    <string name="joined">Unido al Plan</string>
+    <string name="disjoined">Has salido del Plan</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="eventname">Nombre:</string>
+    <string name="descriptionevent">Descripcion</string>
+    <string name="timeevent">Hora</string>
+    <string name="placeevent">Lugar:</string>
+    <string name="typeevent">Tipo:</string>
+    <string name="profilename">"Nombre: "</string>
+    <string name="profilesurname">"Apellido: "</string>
+    <string name="profileemail">"Correo: "</string>
+    <string name="profilenumber">"Cellular: "</string>
+    <string name="profileage">"Edad: "</string>
 </resources>

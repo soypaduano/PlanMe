@@ -1,9 +1,12 @@
 package itesm.mx.planme;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.IInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +36,7 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
     private TextView tv_phonenumber;
     private TextView tv_email;
     private Button btn_editProfile;
+    private ImageView img_photo;
 
 
     @Override
@@ -46,6 +50,7 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
         tv_phonenumber = (TextView)findViewById(R.id.textView_profilePhone);
         tv_email = (TextView)findViewById(R.id.textView_profileEmail);
         btn_editProfile = (Button)findViewById(R.id.button_editProfile);
+        img_photo = (ImageView)findViewById(R.id.imageView_profile);
 
         Intent intent = getIntent();
 
@@ -77,15 +82,22 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Usuario user = snapshot.getValue(Usuario.class);
-                tv_name.setText("Name: " + user.getname());
-                tv_surname.setText("Surname: " + user.getsurname());
-                tv_email.setText("Email: " + user.getemail());
-                tv_phonenumber.setText("Phone Number: " + user.getnumber());
+                String encodedImage = user.getByteArray();
+                byte[] image = Base64.decode(encodedImage, Base64.DEFAULT);
+
+                if (image != null){
+                    Bitmap bmimage = BitmapFactory.decodeByteArray(image, 0, image.length);
+                    img_photo.setImageBitmap(bmimage);
+                }
+                tv_name.setText(getString(R.string.profilename) + user.getname());
+                tv_surname.setText(getString(R.string.profilesurname) + user.getsurname());
+                tv_email.setText(getString(R.string.profileemail) + user.getemail());
+                tv_phonenumber.setText(getString(R.string.profilenumber) + user.getnumber());
                 final Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 String bdayS = user.getbirthday();
                 int bdayI = Integer.parseInt(bdayS.substring(bdayS.length()-4));
-                tv_age.setText("Age: " + String.valueOf(year-bdayI));
+                tv_age.setText(getString(R.string.profileage) + String.valueOf(year-bdayI));
             }
 
             @Override

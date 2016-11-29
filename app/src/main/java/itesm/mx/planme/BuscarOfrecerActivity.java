@@ -109,7 +109,7 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
                 Usuario user = snapshot.getValue(Usuario.class);
                 name = user.getname();
                 surname = user.getsurname();
-                toastmsg("Welcome " + name + " " + surname + "!!");
+                toastmsg(getString(R.string.welcome) + name + " " + surname + "!!");
             }
 
             @Override

@@ -129,7 +129,7 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.btn_join:
-                toastmsg("te has unido al plan");
+                toastmsg(getString(R.string.joined));
                 mDatabase.child("participants").child(uid).push().setValue(evento);
                 break;
 
