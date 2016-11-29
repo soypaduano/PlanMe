@@ -67,8 +67,9 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_editProfile:
-                Intent myIntent = new Intent(this, EditarPerfilActivity.class);
-                startActivity(myIntent);
+                Intent myIntento = new Intent(this, EditarPerfilActivity.class);
+                myIntento.putExtra("uid",uid);
+                startActivity(myIntento);
                 break;
         }
     }

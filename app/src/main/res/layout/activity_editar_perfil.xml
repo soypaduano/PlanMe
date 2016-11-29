@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -48,27 +49,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username:"
-        android:id="@+id/textView14"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/textView13" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/textView15"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:text="@string/phone" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/description"
-        android:id="@+id/textView16"
-        android:layout_marginTop="46dp"
-        android:layout_below="@+id/btn_actualizarFoto"
-        android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -89,14 +73,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinner2"
         android:layout_above="@+id/textView14"
-        android:layout_alignEnd="@+id/btn_actualizarPassword" />
+        android:layout_alignEnd="@+id/btn_changePassword" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/photo"
-        android:id="@+id/btn_actualizarFoto"
+        android:id="@+id/btn_changePhoto"
         android:layout_marginTop="28dp"
         android:layout_below="@+id/textView15"
         android:layout_alignParentStart="true"
@@ -106,15 +90,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/changepassword"
-        android:id="@+id/btn_actualizarPassword"
-        android:layout_alignTop="@+id/btn_actualizarFoto"
+        android:id="@+id/btn_changePassword"
+        android:layout_alignTop="@+id/btn_changePhoto"
         android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
-        android:id="@+id/btn_guardarCambios"
+        android:id="@+id/btn_save"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
@@ -123,7 +107,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/et_editarNombre"
+        android:id="@+id/et_editName"
         android:layout_above="@+id/textView12"
         android:layout_toEndOf="@+id/textView15" />
 
@@ -132,35 +116,26 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/et_editarApellido"
+        android:id="@+id/et_editSurname"
         android:layout_above="@+id/textView13"
         android:layout_toEndOf="@+id/textView14" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/et_editarUsername"
-        android:layout_alignBottom="@+id/textView14"
-        android:layout_toEndOf="@+id/textView16" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
-        android:id="@+id/et_editarTelefono"
+        android:id="@+id/et_editPhoneNumber"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/textView14" />
+        android:layout_alignParentEnd="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/et_editarDescripcion"
-        android:layout_alignBottom="@+id/textView16"
-        android:layout_toStartOf="@+id/spinner2" />
+    <ImageView
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_above="@+id/btn_save"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/imageView_profile"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
 
 </RelativeLayout>
