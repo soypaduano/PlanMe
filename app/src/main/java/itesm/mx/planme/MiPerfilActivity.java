@@ -38,6 +38,7 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
     private TextView tv_email;
     private Button btn_editProfile;
     private ImageView img_photo;
+    private TextView tv_MiPerfilTitulo;
 
 
     @Override
@@ -46,6 +47,7 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_mi_perfil);
 
         tv_age = (TextView)findViewById(R.id.textView_profileAge);
+        tv_MiPerfilTitulo = (TextView) findViewById(R.id.textViewMiPerfilTitulo);
         tv_surname = (TextView)findViewById(R.id.textView_profileSurname);
         tv_name = (TextView)findViewById(R.id.textView_profileName);
         tv_phonenumber = (TextView)findViewById(R.id.textView_profilePhone);
@@ -64,6 +66,7 @@ public class MiPerfilActivity extends AppCompatActivity implements View.OnClickL
         tv_phonenumber.setTypeface(type);
         tv_email.setTypeface(type);
         btn_editProfile.setTypeface(type);
+        tv_MiPerfilTitulo.setTypeface(type);
 
 
         Intent intent = getIntent();

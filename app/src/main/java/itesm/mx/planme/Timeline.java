@@ -1,8 +1,9 @@
 package itesm.mx.planme;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -10,8 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.vision.text.Text;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +28,9 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
 
     private ListView lv_activeEvents;
     private ListView lv_myEvents;
+
+    private TextView tv_allPlans;
+    private TextView tv_myPlans;
 
     private int year;
     private int month;
@@ -45,6 +51,21 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
 
         lv_myEvents = (ListView) findViewById(R.id.lv_myEvents);
         lv_activeEvents = (ListView) findViewById(R.id.lv_activeEvents);
+
+        tv_allPlans = (TextView) findViewById(R.id.tv_allEvents);
+        tv_myPlans = (TextView) findViewById(R.id.tv_myEvents);
+
+
+
+
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
+
+        tv_allPlans.setTypeface(type);
+        tv_myPlans.setTypeface(type);
+
+        tv_myPlans.setTextColor(Color.parseColor("#84ab7d"));
+        tv_allPlans.setTextColor(Color.parseColor("#84ab7d"));
 
         Intent intent = getIntent();
         if(intent!=null){
@@ -148,12 +169,12 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
     public void onClick(View view) {
         switch (view.getId()){
 
-            case R.id.textView24:
+            case R.id.tv_allEvents:
                 Intent myIntent = new Intent(this, EventoActivity.class);
                 startActivity(myIntent);
                 break;
 
-            case R.id.textView25:
+            case R.id.tv_myEvents:
                 Intent myIntento = new Intent(this, EventoActivity.class);
                 startActivity(myIntento);
                 break;

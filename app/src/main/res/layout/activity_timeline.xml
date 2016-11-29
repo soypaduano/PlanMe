@@ -9,13 +9,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="itesm.mx.planme.Timeline">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/activeevents"
-        android:id="@+id/textView24"
-        android:layout_below="@+id/spinner4"
+        android:id="@+id/lv_activeEvents"
+        android:layout_below="@+id/tv_allEvents"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/tv_myEvents" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_myEvents"
+        android:layout_below="@+id/tv_myEvents"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -23,23 +29,20 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/myevents"
-        android:id="@+id/textView25"
+        android:id="@+id/tv_myEvents"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_alignEnd="@+id/tv_allEvents"
+        android:textSize="22sp"
+        />
 
-    <ListView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lv_activeEvents"
-        android:layout_below="@+id/textView24"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/textView25" />
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lv_myEvents"
-        android:layout_below="@+id/textView25"
-        android:layout_alignParentStart="true" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/activeevents"
+        android:id="@+id/tv_allEvents"
+        android:textSize="22sp"
+        tools:textColor="?android:attr/statusBarColor"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
