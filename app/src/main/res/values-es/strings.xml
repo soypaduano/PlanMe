@@ -1,5 +1,5 @@
 <resources>
-    <string name="description">Descripcion</string>
+    <string name="description">Descripción</string>
     <string name="typeEvent">Tipo de Evento</string>
     <string name="time">Hora</string>
     <string name="place">Lugar</string>
@@ -53,4 +53,5 @@
     <string name="changepassword">Cambiar contraseña</string>
     <string name="title_activity_maps">Mapa</string>
     <string name="toastMsgGetPass">Se te ha enviado un correo para recuperar tu contraseña</string>
+    <string name="save">Guardar</string>
 </resources>
