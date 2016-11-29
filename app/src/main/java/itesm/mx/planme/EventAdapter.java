@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class EventAdapter extends ArrayAdapter<Event>{
 
@@ -37,11 +38,18 @@ public class EventAdapter extends ArrayAdapter<Event>{
         ImageView img_Foto = (ImageView) convertView.findViewById(R.id.imageView_foto);
 
         Event event = getItem(position);
-        tv_planname.setText("Event name: " + event.getname());
-        tv_description.setText("Description: " + event.getdescription());
-        tv_time.setText("Time: " + event.gettime());
-        tv_place.setText("Place: " + event.getAddress());
-        tv_plantype.setText("Type: " + event.getplantype());
+
+        String name = getContext().getResources().getString(R.string.eventname) + event.getname();
+        String description = getContext().getResources().getString(R.string.descriptionevent) + event.getdescription();
+        String time = getContext().getResources().getString(R.string.timeevent) + event.gettime();
+        String place = getContext().getResources().getString(R.string.placeevent) + event.getAddress();
+        String type = getContext().getResources().getString(R.string.typeevent) + event.getplantype();
+
+        tv_planname.setText(name);
+        tv_description.setText(description);
+        tv_time.setText(time);
+        tv_place.setText(place);
+        tv_plantype.setText(type);
         //tv_uid.setText("UID creator: " + event.getuid());
 
         String encodedImage = event.getByteArray();

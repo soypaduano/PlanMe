@@ -2,6 +2,7 @@ package itesm.mx.planme;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -18,11 +19,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Timeline extends AppCompatActivity implements  View.OnClickListener, AdapterView.OnItemClickListener{
 
     private ListView lv_activeEvents;
     private ListView lv_myEvents;
+
+    private int year;
+    private int month;
+    private int day;
+    private String yesterday;
 
     private String uid;
 
@@ -44,6 +51,13 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
             uid = intent.getStringExtra("uid");
         }
 
+        final Calendar cal = Calendar.getInstance();
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH);
+        day = cal.get(Calendar.DAY_OF_MONTH);
+
+        yesterday = String.valueOf(new StringBuilder().append(pad(day-1)).append("/").append(pad(month + 1)).append("/").append(pad(year)));
+
         createListAllEvents();
         createListMyEvents();
 
@@ -56,6 +70,8 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
         lv_myEvents.setOnItemClickListener(this);
 
         registerForContextMenu(lv_myEvents);
+
+
 
     }
 
@@ -76,7 +92,11 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
                             break;
                         }
                     }
-                    if (found == false)
+                    String eventdate = evento.getdate();
+                    int cyear = Integer.parseInt(String.valueOf(new StringBuilder().append(eventdate.substring(6,10))));
+                    int cmonth = Integer.parseInt(String.valueOf(new StringBuilder().append(eventdate.substring(3,5))));
+                    int cday = Integer.parseInt(String.valueOf(new StringBuilder().append(eventdate.substring(0,2))));
+                    if (found == false && year>=cyear && cmonth>=month && cday>=day)
                         listAllEvents.add(evento);
                 }
                 adapterAllEvents.notifyDataSetChanged();
@@ -106,7 +126,11 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
                             break;
                         }
                     }
-                    if(found==false)
+                    String eventdate = evento.getdate();
+                    int cyear = Integer.parseInt(String.valueOf(new StringBuilder().append(eventdate.substring(6,10))));
+                    int cmonth = Integer.parseInt(String.valueOf(new StringBuilder().append(eventdate.substring(3,5))));
+                    int cday = Integer.parseInt(String.valueOf(new StringBuilder().append(eventdate.substring(0,2))));
+                    if (found == false && year>=cyear && cmonth>=month && cday>=day)
                         listMyEvents.add(evento);
                 }
                 adapterMyEvents.notifyDataSetChanged();
@@ -206,5 +230,12 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
         if(eventArray.getname().equals(evento.getname()) && eventArray.getdate().equals(evento.getdate()) && eventArray.gettime().equals(evento.gettime()) && eventArray.getdescription().equals(evento.getdescription()) && eventArray.getAddress().equals(evento.getAddress()) && eventArray.getplantype().equals(evento.getplantype()))
             found = true;
         return found;
+    }
+
+    private static String pad(int c) {
+        if (c >= 10)
+            return String.valueOf(c);
+        else
+            return "0" + String.valueOf(c);
     }
 }
