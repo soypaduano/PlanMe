@@ -35,12 +35,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btn_signup.setTypeface(type);
 
 
-        ActionBar actionBar;
-
-        actionBar = getActionBar();
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#93E9FA"));
-        actionBar.setBackgroundDrawable(colorDrawable);
-
     }
 
     @Override
