@@ -178,10 +178,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.btn_photo:
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                /*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if(intent.resolveActivity(getPackageManager()) != null){
                     startActivityForResult(intent, REQUEST_CODE);
-                }
+                }*/
+                Intent chooseImageIntent = ImagePicker.getPickImageIntent(this);
+                startActivityForResult(chooseImageIntent, REQUEST_CODE);
                 break;
 
             case R.id.btn_registrate:
@@ -245,7 +247,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onActivityResult(requestCode, resultCode, data);
 
                 if(requestCode== REQUEST_CODE && resultCode==RESULT_OK){
-                    bitmap = (Bitmap)data.getExtras().get("data");
+                    bitmap = ImagePicker.getImageFromResult(this, resultCode, data);
+                    //bitmap = (Bitmap)data.getExtras().get("data");
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     byteArray = stream.toByteArray();
