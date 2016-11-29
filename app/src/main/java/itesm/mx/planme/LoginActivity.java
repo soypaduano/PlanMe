@@ -28,6 +28,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      * acceder al sistema. */
 
 
+     /* Pagina del Log In, aqui el usuario introduce su email y su password para poder
+     * acceder al sistema. */
+
 
     private Button btn_login;
     private EditText et_email;
@@ -68,6 +71,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tv_forgotPass.setTypeface(type);
         tv_yourEmail.setTypeface(type);
         tv_yourPassword.setTypeface(type);
+
 
 
 
