@@ -55,10 +55,6 @@ public class Timeline extends AppCompatActivity implements  View.OnClickListener
         tv_allPlans = (TextView) findViewById(R.id.tv_allEvents);
         tv_myPlans = (TextView) findViewById(R.id.tv_myEvents);
 
-
-
-
-
         Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
 
         tv_allPlans.setTypeface(type);

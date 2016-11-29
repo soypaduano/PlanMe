@@ -3,6 +3,8 @@ package itesm.mx.planme;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -67,6 +69,22 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
         tv_creatorname = (TextView)findViewById(R.id.textView_creatorname);
         tv_participants = (TextView)findViewById(R.id.textView_participants);
 
+
+
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/Railway.otf");
+
+        btn_join.setTypeface(type);
+        btn_join.setTextColor(Color.parseColor("#84ab7d"));
+        btn_calling.setTypeface(type);
+        tv_name.setTypeface(type);
+        tv_description.setTypeface(type);
+        tv_place.setTypeface(type);
+        tv_place.setTextColor(Color.parseColor("#2c33bd"));
+        tv_time.setTypeface(type);
+        tv_date.setTypeface(type);
+        tv_creatorname.setTypeface(type);
+        tv_participants.setTypeface(type);
+
         img_photoEvent = (ImageView)findViewById(R.id.imageView_photoEvent);
 
         btn_calling.setOnClickListener(this);
@@ -95,8 +113,7 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
             ref.addValueEventListener(new ValueEventListener() {
 
                 @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    Usuario user = snapshot.child(evento.getuid()).getValue(Usuario.class);
+                public void onDataChange(DataSnapshot snapshot) {Usuario user = snapshot.child(evento.getuid()).getValue(Usuario.class);
                     creatorName = user.getname();
                     tv_creatorname.setText(creatorName);
                 }

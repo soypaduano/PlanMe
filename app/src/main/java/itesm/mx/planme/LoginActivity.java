@@ -1,7 +1,10 @@
 package itesm.mx.planme;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,6 +56,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btn_login.setTypeface(type);
         et_email.setTypeface(type);
         tv_forgotPass.setTypeface(type);
+
+
+
+
 
 
 
