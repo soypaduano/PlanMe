@@ -102,12 +102,12 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.btn_changePhoto:
-                Intent chooseImageIntent = ImagePicker.getPickImageIntent(this);
-                startActivityForResult(chooseImageIntent, REQUEST_CODE);
-                /*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                /*Intent chooseImageIntent = ImagePicker.getPickImageIntent(this);
+                startActivityForResult(chooseImageIntent, REQUEST_CODE);*/
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if(intent.resolveActivity(getPackageManager()) != null){
                     startActivityForResult(intent, REQUEST_CODE);
-                }*/
+                }
                 break;
 
             case R.id.btn_changePassword:
@@ -169,8 +169,8 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode== REQUEST_CODE && resultCode==RESULT_OK){
-            bitmap = ImagePicker.getImageFromResult(this, resultCode, data);
-            //bitmap = (Bitmap)data.getExtras().get("data");
+            //bitmap = ImagePicker.getImageFromResult(this, resultCode, data);
+            bitmap = (Bitmap)data.getExtras().get("data");
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byteArray = stream.toByteArray();

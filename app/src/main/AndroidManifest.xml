@@ -4,8 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,48 +13,60 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".SignupActivity"
+        <activity
+            android:name=".SignupActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CambiarPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CambiarPasswordActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".EditarPerfilActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditarPerfilActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MiPerfilActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MiPerfilActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".UsuarioPerfilActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UsuarioPerfilActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Timeline"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Timeline"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".EventoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EventoActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".NewEventActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewEventActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".RecuperarPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RecuperarPasswordActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".BuscarOfrecerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BuscarOfrecerActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -71,11 +83,11 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBwd_reH40GPmfy4t83tmel-bZigxePjrU" />
-
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
+            android:value="@integer/google_play_services_version" />
 
+        <activity android:name=".ParticipantActivity"></activity>
     </application>
 
 </manifest>

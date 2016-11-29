@@ -286,12 +286,12 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.btn_photo:
-                Intent chooseImageIntent = ImagePicker.getPickImageIntent(this);
-                startActivityForResult(chooseImageIntent, REQUEST_CODE);
-                /*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                /*Intent chooseImageIntent = ImagePicker.getPickImageIntent(this);
+                startActivityForResult(chooseImageIntent, REQUEST_CODE);*/
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if(intent.resolveActivity(getPackageManager()) != null){
                     startActivityForResult(intent, REQUEST_CODE);
-                }*/
+                }
                 break;
 
             case R.id.btn_settime:
@@ -311,8 +311,8 @@ public class NewEventActivity extends AppCompatActivity implements View.OnClickL
         switch (requestCode){
             case REQUEST_CODE:
                 if(resultCode==RESULT_OK){
-                    //bitmap = (Bitmap) data.getExtras().get("data");
-                    bitmap = ImagePicker.getImageFromResult(this, resultCode, data);
+                    bitmap = (Bitmap) data.getExtras().get("data");
+                    //bitmap = ImagePicker.getImageFromResult(this, resultCode, data);
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     byteArray = stream.toByteArray();

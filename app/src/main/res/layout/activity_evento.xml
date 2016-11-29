@@ -28,7 +28,8 @@
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/textView_nameEvent"
         android:layout_marginTop="10dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="17sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,7 +58,8 @@
             android:id="@+id/textView_time1"
             android:gravity="center"
             android:textStyle="bold"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,7 +74,8 @@
             android:text="@string/date"
             android:id="@+id/textView23"
             android:textStyle="bold"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,21 +100,25 @@
             android:text="@string/place"
             android:id="@+id/textView_place"
             android:gravity="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="17sp" />
 
         <ImageView
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:id="@+id/imageView_photoEvent"
-            android:layout_weight="0.65" />
+            android:id="@+id/imageView_photoEvent" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/textView_place2"
             android:clickable="false"
             android:contextClickable="false"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:gravity="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -123,15 +130,15 @@
         android:id="@+id/linearLayout6">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
             android:text="@string/calling"
             android:id="@+id/btn_calling"
             android:layout_gravity="right"
             android:layout_weight="1" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="@string/joining"
             android:id="@+id/btn_join"
@@ -154,7 +161,8 @@
             android:text="@string/participants"
             android:id="@+id/textView_participants"
             android:gravity="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="17sp" />
 
         <ListView
             android:layout_width="wrap_content"
@@ -171,7 +179,8 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/linearLayout2"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/linearLayout5">
+        android:layout_above="@+id/linearLayout5"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -179,14 +188,15 @@
             android:text="@string/createby"
             android:id="@+id/textView4"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="20dp" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView_creatorname"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="20dp" />
+            android:layout_marginLeft="20dp" />
 
     </LinearLayout>
 

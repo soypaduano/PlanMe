@@ -61,7 +61,7 @@ public class BuscarOfrecerActivity extends AppCompatActivity implements View.OnC
             uid = intent.getStringExtra("uid");
         }
 
-        toastWelcome();
+        //toastWelcome();
     }
 
     @Override

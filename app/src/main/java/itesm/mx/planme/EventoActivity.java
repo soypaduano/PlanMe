@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -297,4 +298,13 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
     public void onBackPressed(){
         finish();
     }
+
+    /*@Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Usuario user = (Usuario)parent.getItemAtPosition(position);
+        Intent intent =  new Intent(this, ParticipantActivity.class);
+        intent.putExtra("user", user);
+        intent.putExtra("uid",uid);
+        startActivity(intent);
+    }*/
 }
