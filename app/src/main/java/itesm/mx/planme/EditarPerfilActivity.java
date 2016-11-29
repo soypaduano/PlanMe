@@ -62,6 +62,8 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         et_editSurname = (EditText) findViewById(R.id.et_editSurname);
         et_editPhoneNumber = (EditText) findViewById(R.id.et_editPhoneNumber);
 
+        tv_editProfileTitle = (TextView) findViewById(R.id.tvEditProfileTitle);
+
         btn_changePhoto = (Button) findViewById(R.id.btn_changePhoto);
         btn_changePassword = (Button) findViewById(R.id.btn_changePassword);
         btn_save = (Button) findViewById(R.id.btn_save);
