@@ -85,9 +85,6 @@ public class EventoActivity extends AppCompatActivity implements View.OnClickLis
         tv_creatorname.setTypeface(type);
         tv_participants.setTypeface(type);
 
-
-
-
         img_photoEvent = (ImageView)findViewById(R.id.imageView_photoEvent);
 
         btn_calling.setOnClickListener(this);
