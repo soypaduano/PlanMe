@@ -91,7 +91,6 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
             case R.id.btn_changePassword:
                 Intent myIntento = new Intent(this, CambiarPasswordActivity.class);
                 startActivity(myIntento);
-                finish();
                 break;
         }
     }
