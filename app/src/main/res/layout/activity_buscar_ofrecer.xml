@@ -28,20 +28,19 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:id="@+id/btn_showProfile"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/verperfil"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/btn_findPlan"
-        android:layout_marginLeft="30dp" />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SIGN-OUT"
         android:id="@+id/button_signout"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/btn_showProfile"
+        android:background="@drawable/verperfil"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

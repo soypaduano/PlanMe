@@ -50,4 +50,7 @@
     <string name="profileemail">"Correo: "</string>
     <string name="profilenumber">"Cellular: "</string>
     <string name="profileage">"Edad: "</string>
+    <string name="changepassword">Cambiar contraseña</string>
+    <string name="title_activity_maps">Mapa</string>
+    <string name="toastMsgGetPass">Se te ha enviado un correo para recuperar tu contraseña</string>
 </resources>
